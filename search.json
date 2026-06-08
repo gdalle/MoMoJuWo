@@ -1,0 +1,296 @@
+[
+  {
+    "objectID": "pages/further.html",
+    "href": "pages/further.html",
+    "title": "Going further",
+    "section": "",
+    "text": "Documentation\nLearning\nBlog\nCommunity\nContribute\nJuliaCon"
+  },
+  {
+    "objectID": "pages/further.html#official",
+    "href": "pages/further.html#official",
+    "title": "Going further",
+    "section": "",
+    "text": "Documentation\nLearning\nBlog\nCommunity\nContribute\nJuliaCon"
+  },
+  {
+    "objectID": "pages/further.html#tutorials",
+    "href": "pages/further.html#tutorials",
+    "title": "Going further",
+    "section": "Tutorials",
+    "text": "Tutorials\n\nAdvanced Scientific Computing by Tim Holy\nGood Scientific Code Workshop by JuliaDynamics\nIntroduction to Julia Tutorial Workshop by Jose Storopoli\nIntroduction to Julia Course by CSC Training\nJulia for Economists by Cameron Pfiffer\nJulia for High-Performance Computing by Carsten Bauer\nJulia programming for ML by Adrian Hill\nJuliaNotes.jl by the Martínez Molecular Modeling Group\nLearn X in Y Minutes Where X=Julia by Leah Hanson et al."
+  },
+  {
+    "objectID": "pages/further.html#blogs",
+    "href": "pages/further.html#blogs",
+    "title": "Going further",
+    "section": "Blogs",
+    "text": "Blogs\n\nJakob Nybo Nissen\nOle Kröger\nMiguel Raz Guzmán Macedo\nChris Rackauckas\nBogumił Kamiński\nKatharine Hyatt\nFrames Catherine White\nInvenia"
+  },
+  {
+    "objectID": "pages/further.html#videos",
+    "href": "pages/further.html#videos",
+    "title": "Going further",
+    "section": "Videos",
+    "text": "Videos\n\nThe Unreasonable Effectiveness of Multiple Dispatch by Stefan Karpinski at JuliaCon 2019"
+  },
+  {
+    "objectID": "pages/further.html#lore",
+    "href": "pages/further.html#lore",
+    "title": "Going further",
+    "section": "Lore",
+    "text": "Lore\n\nWhy we created Julia (2012)\nPaper in SIAM Review: Julia - A Fresh Approach to Numerical Computing (2017)\nAnnouncing the release of Julia 1.0 (2018)\nThe Julia Project and Its Entities (2019)\nJulia’s Release Process (2019)\nCode, docs, and tests: what’s in the General registry? (2021)\nWhy We Use Julia, 10 Years Later (2022)"
+  },
+  {
+    "objectID": "pages/writing.html",
+    "href": "pages/writing.html",
+    "title": "Writing your code",
+    "section": "",
+    "text": "Help page\nCommunity resources\nDiscourse forum\nZulip\nSlack\nStartHere.jl"
+  },
+  {
+    "objectID": "pages/writing.html#getting-help",
+    "href": "pages/writing.html#getting-help",
+    "title": "Writing your code",
+    "section": "",
+    "text": "Help page\nCommunity resources\nDiscourse forum\nZulip\nSlack\nStartHere.jl"
+  },
+  {
+    "objectID": "pages/writing.html#installation",
+    "href": "pages/writing.html#installation",
+    "title": "Writing your code",
+    "section": "Installation",
+    "text": "Installation\n\nJulia downloads page\njuliaup\nWindows Store\ncurrent stable version / long-term support version"
+  },
+  {
+    "objectID": "pages/writing.html#repl-pkg",
+    "href": "pages/writing.html#repl-pkg",
+    "title": "Writing your code",
+    "section": "REPL & Pkg",
+    "text": "REPL & Pkg\n\nREPL documentation\nPkg.jl\nPkg documentation"
+  },
+  {
+    "objectID": "pages/writing.html#editor",
+    "href": "pages/writing.html#editor",
+    "title": "Writing your code",
+    "section": "Editor",
+    "text": "Editor\n\nVisual Studio Code\nJulia VSCode extension\ndocumentation\nkeyboard shortcuts\nVSCodium\nEmacs\nVim\nJuliaEditorSupport\nJuliaMono"
+  },
+  {
+    "objectID": "pages/writing.html#running-code",
+    "href": "pages/writing.html#running-code",
+    "title": "Writing your code",
+    "section": "Running code",
+    "text": "Running code\n\nRevise.jl"
+  },
+  {
+    "objectID": "pages/writing.html#notebooks",
+    "href": "pages/writing.html#notebooks",
+    "title": "Writing your code",
+    "section": "Notebooks",
+    "text": "Notebooks\n\nJupyter\nIJulia.jl\nPluto.jl\nCodeCells.jl"
+  },
+  {
+    "objectID": "pages/writing.html#markdown",
+    "href": "pages/writing.html#markdown",
+    "title": "Writing your code",
+    "section": "Markdown",
+    "text": "Markdown\n\nMarkdown\n\n\nQuarto\n\nQuarto\nextension\ndocumentation"
+  },
+  {
+    "objectID": "pages/writing.html#environments",
+    "href": "pages/writing.html#environments",
+    "title": "Writing your code",
+    "section": "Environments",
+    "text": "Environments\n\ninstall packages\nmanage environments\nenvironment stacking\nenvironment\nPkgDependency.jl"
+  },
+  {
+    "objectID": "pages/writing.html#local-packages",
+    "href": "pages/writing.html#local-packages",
+    "title": "Writing your code",
+    "section": "Local packages",
+    "text": "Local packages\n\ncreate a package\nmodule"
+  },
+  {
+    "objectID": "pages/writing.html#development-workflow",
+    "href": "pages/writing.html#development-workflow",
+    "title": "Writing your code",
+    "section": "Development workflow",
+    "text": "Development workflow\n\nRevise.jl\ndocumentation\nshared\nstacked\nShareAdd.jl"
+  },
+  {
+    "objectID": "pages/writing.html#configuration",
+    "href": "pages/writing.html#configuration",
+    "title": "Writing your code",
+    "section": "Configuration",
+    "text": "Configuration\n\nstartup flags\nstartup file\nOhMyREPL.jl\nStartupCustomizer.jl\nAbbreviatedStackTraces.jl\ninteractions with VSCode\nTerm.jl\nadvanced configuration"
+  },
+  {
+    "objectID": "pages/writing.html#interactivity",
+    "href": "pages/writing.html#interactivity",
+    "title": "Writing your code",
+    "section": "Interactivity",
+    "text": "Interactivity\n\nInteractiveUtils.jl\nAbout.jl\nInteractiveCodeSearch.jl\nInteractiveErrors.jl\nCodeTracking.jl"
+  },
+  {
+    "objectID": "pages/writing.html#logging",
+    "href": "pages/writing.html#logging",
+    "title": "Writing your code",
+    "section": "Logging",
+    "text": "Logging\n\ndocumentation\nProgressLogging.jl\nSuppressor.jl"
+  },
+  {
+    "objectID": "pages/writing.html#debugging",
+    "href": "pages/writing.html#debugging",
+    "title": "Writing your code",
+    "section": "Debugging",
+    "text": "Debugging\n\nSetting\n\nFermat number\n\n\n\nInfiltrator.jl\n\nInfiltrator.jl\ninteger overflow\n\n\n\nDebugger.jl\n\nDebugger.jl\ncustom navigation commands\ngraphical interface for debugging"
+  },
+  {
+    "objectID": "pages/sharing.html",
+    "href": "pages/sharing.html",
+    "title": "Sharing your code",
+    "section": "",
+    "text": "GitHub\nGitLab\nGit\nGitHub documentation\ncreating\npackage naming rules\nPkgTemplates.jl\nPackageMaker.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#setup",
+    "href": "pages/sharing.html#setup",
+    "title": "Sharing your code",
+    "section": "",
+    "text": "GitHub\nGitLab\nGit\nGitHub documentation\ncreating\npackage naming rules\nPkgTemplates.jl\nPackageMaker.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#github-actions",
+    "href": "pages/sharing.html#github-actions",
+    "title": "Sharing your code",
+    "section": "GitHub Actions",
+    "text": "GitHub Actions\n\nGitHub Actions\nplugins\ndefault selection"
+  },
+  {
+    "objectID": "pages/sharing.html#testing",
+    "href": "pages/sharing.html#testing",
+    "title": "Sharing your code",
+    "section": "Testing",
+    "text": "Testing\n\nunit testing\nArgCheck.jl\ntest-specific dependencies\nTestEnv.jl\nTestItemRunner.jl\nReferenceTests.jl\nReTest.jl\nTestSetExtensions.jl\nTestReadme.jl\nReTestItems.jl\nCodecov\nadditional configuration step\nLocalCoverage.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#style",
+    "href": "pages/sharing.html#style",
+    "title": "Sharing your code",
+    "section": "Style",
+    "text": "Style\n\nstyle guide\nBlueStyle\nSciMLStyle\nJuliaFormatter.jl\ndefault formatter\njulia-format action"
+  },
+  {
+    "objectID": "pages/sharing.html#code-quality",
+    "href": "pages/sharing.html#code-quality",
+    "title": "Sharing your code",
+    "section": "Code quality",
+    "text": "Code quality\n\nAqua.jl\nJET.jl\nerror analysis\nVSCode display\nExplicitImports.jl\nReLint.jl\npre-commit"
+  },
+  {
+    "objectID": "pages/sharing.html#documentation",
+    "href": "pages/sharing.html#documentation",
+    "title": "Sharing your code",
+    "section": "Documentation",
+    "text": "Documentation\n\ndocstrings\nDocStringExtensions.jl\nDocumenter.jl\ndocumentation\nLiveServer.jl\nDocumenter plugin\nGitHub Actions workflow\nGitHub pages\nselect the gh-pages branch as source\nDocumenterCitations.jl\nDocumenterInterLinks.jl\nPollen.jl\nReplay.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#literate-programming",
+    "href": "pages/sharing.html#literate-programming",
+    "title": "Sharing your code",
+    "section": "Literate programming",
+    "text": "Literate programming\n\nPluto.jl\nJupyter\nLiterate.jl\nBooks.jl\nPlutoPapers.jl\nQuarto\nand more\npublish\nQuarto Pub"
+  },
+  {
+    "objectID": "pages/sharing.html#versions-and-registration",
+    "href": "pages/sharing.html#versions-and-registration",
+    "title": "Sharing your code",
+    "section": "Versions and registration",
+    "text": "Versions and registration\n\nsemantic versioning\ncompatibility bounds\nPackageCompatUI.jl\nCompatHelper.jl\nDependabot\njulia-downgrade-compat\ngeneral registry\nRegistrator.jl\nTagBot\nnecessary SSH configuration\nLocalRegistry.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#reproducibility",
+    "href": "pages/sharing.html#reproducibility",
+    "title": "Sharing your code",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nDrWatson.jl\nrandom number generation\nStableRNGs.jl\nDataDeps.jl\nDataToolkit.jl\nArtifactUtils.jl\nZenodo\nPkgCite.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#interoperability",
+    "href": "pages/sharing.html#interoperability",
+    "title": "Sharing your code",
+    "section": "Interoperability",
+    "text": "Interoperability\n\nCompat.jl\npackage extensions\nPackageExtensionTools.jl\nC and Fortran\nCondaPkg.jl\nPythonCall.jl\nJuliaInterop\nRCall.jl\nPreferences.jl\nInterfaces.jl\nRequiredInterfaces.jl\nPropCheck.jl"
+  },
+  {
+    "objectID": "pages/sharing.html#collaboration",
+    "href": "pages/sharing.html#collaboration",
+    "title": "Sharing your code",
+    "section": "Collaboration",
+    "text": "Collaboration\n\nSciML ColPrac\ncontribute"
+  },
+  {
+    "objectID": "pages/optimizing.html",
+    "href": "pages/optimizing.html",
+    "title": "Optimizing your code",
+    "section": "",
+    "text": "machine code\nuntyped global variables\nofficial performance tips"
+  },
+  {
+    "objectID": "pages/optimizing.html#principles",
+    "href": "pages/optimizing.html#principles",
+    "title": "Optimizing your code",
+    "section": "",
+    "text": "machine code\nuntyped global variables\nofficial performance tips"
+  },
+  {
+    "objectID": "pages/optimizing.html#measurements",
+    "href": "pages/optimizing.html#measurements",
+    "title": "Optimizing your code",
+    "section": "Measurements",
+    "text": "Measurements\n\ngarbage collector\n\n\nBenchmarkTools\n\nBenchmarkTools.jl\ninterpolate external values\nsetup phase\n\n\n\nChairmarks\n\nChairmarks.jl\nChairmarks documentation\nPrettyChairmarks.jl\n\n\n\nBenchmark suites\n\nPkgBenchmark.jl\nBenchmarkCI.jl\nAirSpeedVelocity.jl\nPkgJogger.jl\nJulia-TTFX-Snippets\n\n\n\nOther tools\n\nTimerOutputs.jl\nhyperfine\nProgressMeter.jl\nProgressLogging.jl"
+  },
+  {
+    "objectID": "pages/optimizing.html#profiling",
+    "href": "pages/optimizing.html#profiling",
+    "title": "Optimizing your code",
+    "section": "Profiling",
+    "text": "Profiling\n\nSampling\n\none for runtime\none for memory\n\n\n\nVisualization tools\n\nProfileView.jl\nPProf.jl\npprof\nProfileSVG.jl\nProfileCanvas.jl\nStatProfilerHTML.jl\n\n\n\nExternal profilers\n\nIntel VTune\nIntelITT.jl\nNVIDIA Nsight Systems\nNVTX.jl\nTracy"
+  },
+  {
+    "objectID": "pages/optimizing.html#type-stability",
+    "href": "pages/optimizing.html#type-stability",
+    "title": "Optimizing your code",
+    "section": "Type stability",
+    "text": "Type stability\n\nJET.jl\nparametric types\n@code_warntype\noptimization analysis\ntest integrations\nstatic linter\nCthulhu.jl\nvideo example\nimprove type inference\nDispatchDoctor.jl"
+  },
+  {
+    "objectID": "pages/optimizing.html#memory-management",
+    "href": "pages/optimizing.html#memory-management",
+    "title": "Optimizing your code",
+    "section": "Memory management",
+    "text": "Memory management\n\narrays and allocations\nAllocCheck.jl"
+  },
+  {
+    "objectID": "pages/optimizing.html#compilation",
+    "href": "pages/optimizing.html#compilation",
+    "title": "Optimizing your code",
+    "section": "Compilation",
+    "text": "Compilation\n\nPrecompilation\n\nPrecompileTools.jl\ndocumentation\nSnoopCompile.jl\nPrecompileSignatures.jl\nPrecompileAfterUpdate.jl\n\n\n\nPackage compilation\n\nPackageCompiler.jl\nstreamlined with VSCode\n\n\n\nStatic compilation\n\napps\nlibraries\nArgParse.jl\nrelocability\nStaticCompiler.jl\nStaticTools.jl\nStaticArrays.jl\ndetailed guide\nJuliaC.jl\nBumper.jl"
+  },
+  {
+    "objectID": "pages/optimizing.html#parallelism",
+    "href": "pages/optimizing.html#parallelism",
+    "title": "Optimizing your code",
+    "section": "Parallelism",
+    "text": "Parallelism\n\nmultithreading\nmultiprocessing / distributed computing\n\n\nMultithreading\n\nBLAS\nLAPACK\nmultithreading and linear algebra\nOhMyThreads.jl\ntranslation guide\nPolyester.jl\nThreadPinning.jl\nLoopVectorization.jl\nOctavian.jl\nThreadsX.jl\n\n\n\nDistributed computing\n\nTransducers.jl\nFolds.jl\nMPI.jl\nMessage Passing Interface standard\nElemental.jl\nElemental\n\n\n\nGPU programming\n\nJuliaGPU\nCUDA.jl\nKernelAbstractions.jl\n\n\n\nSIMD instructions\n\nPerformance annotations\nSIMD.jl\nblog post"
+  },
+  {
+    "objectID": "pages/optimizing.html#efficient-types",
+    "href": "pages/optimizing.html#efficient-types",
+    "title": "Optimizing your code",
+    "section": "Efficient types",
+    "text": "Efficient types\n\nStatic arrays\n\nStaticArrays.jl\nAccessors.jl\n\n\n\nClassic data structures\n\nJuliaCollections\nDataStructures.jl\nIterTools.jl\nMemoize.jl"
+  }
+]
