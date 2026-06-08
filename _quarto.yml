@@ -1,14 +1,18 @@
 project:
   type: website
 
+engines: ['julia']
+
 website:
   title: "MoMoJuWo"
+  llms-txt: true
   navbar:
     left:
-      - pages/writing.qmd
-      - pages/sharing.qmd
-      - pages/optimizing.qmd
-      - pages/further.qmd
+      - pages/writing/index.qmd
+      - pages/sharing/index.qmd
+      - pages/optimizing/index.qmd
+      - pages/vibing/index.qmd
+      - pages/further/index.qmd
 
 format:
   html:

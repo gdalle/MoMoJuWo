@@ -1,5 +1,8 @@
 ---
-title: "Sharing your code"
+title: "Sharing"
+engine: julia
+execute:
+  cache: true
 ---
 
 ## Setup
@@ -20,6 +23,11 @@ title: "Sharing your code"
 - [default selection](https://juliaci.github.io/PkgTemplates.jl/stable/user/#Default-Plugins)
 
 ## Testing
+
+```{julia}
+using Test
+@test sqrt(4) ≈ 2
+```
 
 - [unit testing](https://docs.julialang.org/en/v1/stdlib/Test/)
 - [ArgCheck.jl](https://github.com/jw3126/ArgCheck.jl)

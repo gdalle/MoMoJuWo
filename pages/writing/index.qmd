@@ -1,5 +1,8 @@
 ---
-title: "Writing your code"
+title: "Writing"
+engine: julia
+execute:
+  cache: true
 ---
 
 ## Getting help
@@ -119,3 +122,4 @@ title: "Writing your code"
 - [Debugger.jl](https://github.com/JuliaDebug/Debugger.jl)
 - [custom navigation commands](https://github.com/JuliaDebug/Debugger.jl#debugger-commands)
 - [graphical interface for debugging](https://www.julia-vscode.org/docs/stable/userguide/debugging/)
+

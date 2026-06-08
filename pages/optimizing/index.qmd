@@ -1,5 +1,8 @@
 ---
-title: "Optimizing your code"
+title: "Optimizing"
+engine: julia
+execute:
+  cache: true
 ---
 
 ## Principles
