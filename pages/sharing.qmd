@@ -1,0 +1,128 @@
+---
+title: "Sharing your code"
+---
+
+## Setup
+
+- [GitHub](https://github.com/)
+- [GitLab](https://gitlab.com/)
+- [Git](https://git-scm.com/)
+- [GitHub documentation](https://docs.github.com/en/get-started/quickstart)
+- [creating](https://github.com/new)
+- [package naming rules](https://pkgdocs.julialang.org/v1/creating-packages/#Package-naming-rules)
+- [PkgTemplates.jl](https://github.com/JuliaCI/PkgTemplates.jl)
+- [PackageMaker.jl](https://github.com/Eben60/PackageMaker.jl)
+
+## GitHub Actions
+
+- [GitHub Actions](https://docs.github.com/en/actions/quickstart)
+- [plugins](https://juliaci.github.io/PkgTemplates.jl/stable/user/#Plugins-1)
+- [default selection](https://juliaci.github.io/PkgTemplates.jl/stable/user/#Default-Plugins)
+
+## Testing
+
+- [unit testing](https://docs.julialang.org/en/v1/stdlib/Test/)
+- [ArgCheck.jl](https://github.com/jw3126/ArgCheck.jl)
+- [test-specific dependencies](https://pkgdocs.julialang.org/v1/creating-packages/#Adding-tests-to-the-package)
+- [TestEnv.jl](https://github.com/JuliaTesting/TestEnv.jl)
+- [TestItemRunner.jl](https://github.com/julia-vscode/TestItemRunner.jl)
+- [ReferenceTests.jl](https://github.com/JuliaTesting/ReferenceTests.jl)
+- [ReTest.jl](https://github.com/JuliaTesting/ReTest.jl)
+- [TestSetExtensions.jl](https://github.com/ssfrr/TestSetExtensions.jl)
+- [TestReadme.jl](https://github.com/thchr/TestReadme.jl)
+- [ReTestItems.jl](https://github.com/JuliaTesting/ReTestItems.jl)
+- [Codecov](https://about.codecov.io/)
+- [additional configuration step](https://docs.codecov.com/docs/adding-the-codecov-token)
+- [LocalCoverage.jl](https://github.com/JuliaCI/LocalCoverage.jl)
+
+## Style
+
+- [style guide](https://docs.julialang.org/en/v1/manual/style-guide/)
+- [BlueStyle](https://github.com/JuliaDiff/BlueStyle)
+- [SciMLStyle](https://github.com/SciML/SciMLStyle)
+- [JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)
+- [default formatter](https://www.julia-vscode.org/docs/stable/userguide/formatter/)
+- [julia-format action](https://github.com/julia-actions/julia-format)
+
+## Code quality
+
+- [Aqua.jl](https://github.com/JuliaTesting/Aqua.jl)
+- [JET.jl](https://github.com/aviatesk/JET.jl)
+- [error analysis](https://aviatesk.github.io/JET.jl/stable/jetanalysis/)
+- [VSCode display](https://www.julia-vscode.org/docs/stable/userguide/linter/#Runtime-diagnostics)
+- [ExplicitImports.jl](https://github.com/ericphanson/ExplicitImports.jl)
+- [ReLint.jl](https://github.com/RelationalAI-oss/ReLint.jl)
+- [pre-commit](https://github.com/pre-commit/pre-commit)
+
+## Documentation
+
+- [docstrings](https://docs.julialang.org/en/v1/manual/documentation/)
+- [DocStringExtensions.jl](https://github.com/JuliaDocs/DocStringExtensions.jl)
+- [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl)
+- [documentation](https://documenter.juliadocs.org/stable/)
+- [LiveServer.jl](https://github.com/tlienart/LiveServer.jl)
+- [Documenter plugin](https://juliaci.github.io/PkgTemplates.jl/stable/user/#PkgTemplates.Documenter)
+- [GitHub Actions workflow](https://documenter.juliadocs.org/stable/man/hosting/#gh-pages-Branch)
+- [GitHub pages](https://pages.github.com/)
+- [select the gh-pages branch as source](https://documenter.juliadocs.org/stable/man/hosting/#gh-pages-Branch)
+- [DocumenterCitations.jl](https://github.com/JuliaDocs/DocumenterCitations.jl)
+- [DocumenterInterLinks.jl](https://github.com/JuliaDocs/DocumenterInterLinks.jl)
+- [Pollen.jl](https://github.com/lorenzoh/Pollen.jl)
+- [Replay.jl](https://github.com/AtelierArith/Replay.jl)
+
+## Literate programming
+
+- [Pluto.jl](https://github.com/fonsp/Pluto.jl)
+- [Jupyter](https://jupyter.org/)
+- [Literate.jl](https://github.com/fredrikekre/Literate.jl)
+- [Books.jl](https://github.com/JuliaBooks/Books.jl)
+- [PlutoPapers.jl](https://github.com/mossr/PlutoPapers.jl)
+- [Quarto](https://quarto.org/)
+- [and more](https://quarto.org/docs/output-formats/all-formats.html)
+- [publish](https://quarto.org/docs/publishing/)
+- [Quarto Pub](https://quartopub.com/)
+
+## Versions and registration
+
+- [semantic versioning](https://semver.org/)
+- [compatibility bounds](https://pkgdocs.julialang.org/v1/compatibility/)
+- [PackageCompatUI.jl](https://github.com/GunnarFarneback/PackageCompatUI.jl)
+- [CompatHelper.jl](https://github.com/JuliaRegistries/CompatHelper.jl)
+- [Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates)
+- [julia-downgrade-compat](https://github.com/julia-actions/julia-downgrade-compat)
+- [general registry](https://github.com/JuliaRegistries/General)
+- [Registrator.jl](https://github.com/JuliaRegistries/Registrator.jl)
+- [TagBot](https://github.com/JuliaRegistries/TagBot)
+- [necessary SSH configuration](https://documenter.juliadocs.org/stable/man/hosting/#travis-ssh)
+- [LocalRegistry.jl](https://github.com/GunnarFarneback/LocalRegistry.jl)
+
+## Reproducibility
+
+- [DrWatson.jl](https://github.com/JuliaDynamics/DrWatson.jl)
+- [random number generation](https://docs.julialang.org/en/v1/stdlib/Random/)
+- [StableRNGs.jl](https://github.com/JuliaRandom/StableRNGs.jl)
+- [DataDeps.jl](https://github.com/oxinabox/DataDeps.jl)
+- [DataToolkit.jl](https://github.com/tecosaur/DataToolkit.jl)
+- [ArtifactUtils.jl](https://github.com/JuliaPackaging/ArtifactUtils.jl)
+- [Zenodo](https://zenodo.org/)
+- [PkgCite.jl](https://github.com/SebastianM-C/PkgCite.jl)
+
+## Interoperability
+
+- [Compat.jl](https://github.com/JuliaLang/Compat.jl)
+- [package extensions](https://pkgdocs.julialang.org/v1/creating-packages/#Conditional-loading-of-code-in-packages-(Extensions))
+- [PackageExtensionTools.jl](https://github.com/cjdoris/PackageExtensionTools.jl)
+- [C and Fortran](https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/)
+- [CondaPkg.jl](https://github.com/cjdoris/CondaPkg.jl)
+- [PythonCall.jl](https://github.com/cjdoris/PythonCall.jl)
+- [JuliaInterop](https://github.com/JuliaInterop)
+- [RCall.jl](https://github.com/JuliaInterop/RCall.jl)
+- [Preferences.jl](https://github.com/JuliaPackaging/Preferences.jl)
+- [Interfaces.jl](https://github.com/rafaqz/Interfaces.jl)
+- [RequiredInterfaces.jl](https://github.com/Seelengrab/RequiredInterfaces.jl)
+- [PropCheck.jl](https://github.com/Seelengrab/PropCheck.jl)
+
+## Collaboration
+
+- [SciML ColPrac](https://github.com/SciML/ColPrac)
+- [contribute](https://julialang.org/contribute/)

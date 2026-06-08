@@ -1,0 +1,163 @@
+---
+title: "Optimizing your code"
+---
+
+## Principles
+
+- [machine code](https://en.wikipedia.org/wiki/Machine_code)
+- [untyped global variables](https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-untyped-global-variables)
+- [official performance tips](https://docs.julialang.org/en/v1/manual/performance-tips/)
+
+## Measurements
+
+- [garbage collector](https://docs.julialang.org/en/v1/devdocs/gc/)
+
+### BenchmarkTools
+
+- [BenchmarkTools.jl](https://github.com/JuliaCI/BenchmarkTools.jl)
+- [interpolate external values](https://juliaci.github.io/BenchmarkTools.jl/stable/manual/#Interpolating-values-into-benchmark-expressions)
+- [setup phase](https://juliaci.github.io/BenchmarkTools.jl/stable/manual/#Setup-and-teardown-phases)
+
+### Chairmarks
+
+- [Chairmarks.jl](https://github.com/LilithHafner/Chairmarks.jl)
+- [Chairmarks documentation](https://chairmarks.lilithhafner.com/)
+- [PrettyChairmarks.jl](https://github.com/astrozot/PrettyChairmarks.jl)
+
+### Benchmark suites
+
+- [PkgBenchmark.jl](https://github.com/JuliaCI/PkgBenchmark.jl)
+- [BenchmarkCI.jl](https://github.com/tkf/BenchmarkCI.jl)
+- [AirSpeedVelocity.jl](https://github.com/MilesCranmer/AirspeedVelocity.jl)
+- [PkgJogger.jl](https://github.com/awadell1/PkgJogger.jl)
+- [Julia-TTFX-Snippets](https://github.com/tecosaur/Julia-TTFX-Snippets)
+
+### Other tools
+
+- [TimerOutputs.jl](https://github.com/KristofferC/TimerOutputs.jl)
+- [hyperfine](https://github.com/sharkdp/hyperfine)
+- [ProgressMeter.jl](https://github.com/timholy/ProgressMeter.jl)
+- [ProgressLogging.jl](https://github.com/JuliaLogging/ProgressLogging.jl)
+
+## Profiling
+
+### Sampling
+
+- [one for runtime](https://docs.julialang.org/en/v1/stdlib/Profile/#lib-profiling)
+- [one for memory](https://docs.julialang.org/en/v1/stdlib/Profile/#Memory-profiling)
+
+### Visualization tools
+
+- [ProfileView.jl](https://github.com/timholy/ProfileView.jl)
+- [PProf.jl](https://github.com/JuliaPerf/PProf.jl)
+- [pprof](https://github.com/google/pprof)
+- [ProfileSVG.jl](https://github.com/kimikage/ProfileSVG.jl)
+- [ProfileCanvas.jl](https://github.com/pfitzseb/ProfileCanvas.jl)
+- [StatProfilerHTML.jl](https://github.com/tkluck/StatProfilerHTML.jl)
+
+### External profilers
+
+- [Intel VTune](https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html)
+- [IntelITT.jl](https://github.com/JuliaPerf/IntelITT.jl)
+- [NVIDIA Nsight Systems](https://developer.nvidia.com/nsight-systems)
+- [NVTX.jl](https://github.com/JuliaGPU/NVTX.jl)
+- [Tracy](https://docs.julialang.org/en/v1/devdocs/external_profilers/#Tracy-Profiler)
+
+## Type stability
+
+- [JET.jl](https://github.com/aviatesk/JET.jl)
+- [parametric types](https://docs.julialang.org/en/v1/manual/types/#Parametric-Types)
+- [@code_warntype](https://docs.julialang.org/en/v1/manual/performance-tips/#man-code-warntype)
+- [optimization analysis](https://aviatesk.github.io/JET.jl/stable/optanalysis/)
+- [test integrations](https://aviatesk.github.io/JET.jl/stable/optanalysis/#optanalysis-test-integration)
+- [static linter](https://www.julia-vscode.org/docs/stable/userguide/linter/)
+- [Cthulhu.jl](https://github.com/JuliaDebug/Cthulhu.jl)
+- [video example](https://www.youtube.com/watch?v=pvduxLowpPY)
+- [improve type inference](https://docs.julialang.org/en/v1.12-dev/manual/performance-tips/#Type-inference)
+- [DispatchDoctor.jl](https://github.com/MilesCranmer/DispatchDoctor.jl)
+
+## Memory management
+
+- [arrays and allocations](https://docs.julialang.org/en/v1.12-dev/manual/performance-tips/#Memory-management-and-arrays)
+- [AllocCheck.jl](https://github.com/JuliaLang/AllocCheck.jl)
+
+## Compilation
+
+### Precompilation
+
+- [PrecompileTools.jl](https://github.com/JuliaLang/PrecompileTools.jl)
+- [documentation](https://julialang.github.io/PrecompileTools.jl/stable/#Tutorial:-forcing-precompilation-with-workloads)
+- [SnoopCompile.jl](https://github.com/timholy/SnoopCompile.jl)
+- [PrecompileSignatures.jl](https://github.com/rikhuijzer/PrecompileSignatures.jl)
+- [PrecompileAfterUpdate.jl](https://github.com/roflmaostc/PrecompileAfterUpdate.jl)
+
+### Package compilation
+
+- [PackageCompiler.jl](https://github.com/JuliaLang/PackageCompiler.jl)
+- [streamlined with VSCode](https://www.julia-vscode.org/docs/stable/userguide/compilesysimage/)
+
+### Static compilation
+
+- [apps](https://julialang.github.io/PackageCompiler.jl/stable/apps.html)
+- [libraries](https://julialang.github.io/PackageCompiler.jl/stable/libs.html)
+- [ArgParse.jl](https://github.com/carlobaldassi/ArgParse.jl)
+- [relocability](https://julialang.github.io/PackageCompiler.jl/stable/apps.html#relocatability)
+- [StaticCompiler.jl](https://github.com/tshort/StaticCompiler.jl)
+- [StaticTools.jl](https://github.com/brenhinkeller/StaticTools.jl)
+- [StaticArrays.jl](https://github.com/JuliaArrays/StaticArrays.jl)
+- [detailed guide](https://github.com/tshort/StaticCompiler.jl?tab=readme-ov-file#guide-for-package-authors)
+- [JuliaC.jl](https://github.com/JuliaLang/JuliaC.jl)
+- [Bumper.jl](https://github.com/MasonProtter/Bumper.jl)
+
+## Parallelism
+
+- [multithreading](https://docs.julialang.org/en/v1/manual/multi-threading/)
+- [multiprocessing / distributed computing](https://docs.julialang.org/en/v1/manual/distributed-computing/)
+
+### Multithreading
+
+- [BLAS](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms)
+- [LAPACK](https://en.wikipedia.org/wiki/LAPACK)
+- [multithreading and linear algebra](https://docs.julialang.org/en/v1/manual/performance-tips/#man-multithreading-linear-algebra)
+- [OhMyThreads.jl](https://github.com/JuliaFolds2/OhMyThreads.jl)
+- [translation guide](https://juliafolds2.github.io/OhMyThreads.jl/stable/translation/)
+- [Polyester.jl](https://github.com/JuliaSIMD/Polyester.jl)
+- [ThreadPinning.jl](https://github.com/carstenbauer/ThreadPinning.jl)
+- [LoopVectorization.jl](https://github.com/JuliaSIMD/LoopVectorization.jl)
+- [Octavian.jl](https://github.com/JuliaLinearAlgebra/Octavian.jl)
+- [ThreadsX.jl](https://github.com/tkf/ThreadsX.jl)
+
+### Distributed computing
+
+- [Transducers.jl](https://github.com/JuliaFolds2/Transducers.jl)
+- [Folds.jl](https://github.com/JuliaFolds2/Folds.jl)
+- [MPI.jl](https://github.com/JuliaParallel/MPI.jl)
+- [Message Passing Interface standard](https://en.wikipedia.org/wiki/Message_Passing_Interface)
+- [Elemental.jl](https://github.com/JuliaParallel/Elemental.jl)
+- [Elemental](https://github.com/LLNL/Elemental)
+
+### GPU programming
+
+- [JuliaGPU](https://juliagpu.org/)
+- [CUDA.jl](https://github.com/JuliaGPU/CUDA.jl)
+- [KernelAbstractions.jl](https://github.com/JuliaGPU/KernelAbstractions.jl)
+
+### SIMD instructions
+
+- [Performance annotations](https://docs.julialang.org/en/v1/manual/performance-tips/#man-performance-annotations)
+- [SIMD.jl](https://github.com/eschnett/SIMD.jl)
+- [blog post](https://kristofferc.github.io/post/intrinsics/)
+
+## Efficient types
+
+### Static arrays
+
+- [StaticArrays.jl](https://github.com/JuliaArrays/StaticArrays.jl)
+- [Accessors.jl](https://github.com/JuliaObjects/Accessors.jl)
+
+### Classic data structures
+
+- [JuliaCollections](https://github.com/JuliaCollections)
+- [DataStructures.jl](https://github.com/JuliaCollections/DataStructures.jl)
+- [IterTools.jl](https://github.com/JuliaCollections/IterTools.jl)
+- [Memoize.jl](https://github.com/JuliaCollections/Memoize.jl)
