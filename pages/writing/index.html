@@ -23,10 +23,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -42,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-94b323657c735dfe3b1bf6ebb2c33a55.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bba5ebae505b5c03f3f0d8040a416a6b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +105,39 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -130,10 +197,17 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#getting-help" id="toc-getting-help" class="nav-link active" data-scroll-target="#getting-help">Getting help</a></li>
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#repl-pkg" id="toc-repl-pkg" class="nav-link" data-scroll-target="#repl-pkg">REPL &amp; Pkg</a></li>
+  <li><a href="#repl" id="toc-repl" class="nav-link" data-scroll-target="#repl">REPL</a>
+  <ul class="collapse">
+  <li><a href="#help-mode" id="toc-help-mode" class="nav-link" data-scroll-target="#help-mode">Help mode (<code>?</code>)</a></li>
+  <li><a href="#package-mode" id="toc-package-mode" class="nav-link" data-scroll-target="#package-mode">Package mode (<code>]</code>)</a></li>
+  <li><a href="#shell-mode" id="toc-shell-mode" class="nav-link" data-scroll-target="#shell-mode">Shell mode (<code>;</code>)</a></li>
+  </ul></li>
   <li><a href="#editor" id="toc-editor" class="nav-link" data-scroll-target="#editor">Editor</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running code</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running code</a>
+  <ul class="collapse">
   <li><a href="#notebooks" id="toc-notebooks" class="nav-link" data-scroll-target="#notebooks">Notebooks</a></li>
+  </ul></li>
   <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a>
   <ul class="collapse">
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
@@ -175,157 +249,571 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>In this post, you will learn about tools to create, run and debug Julia code.</p>
 <section id="getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="getting-help">Getting help</h2>
-<ul>
-<li><a href="https://julialang.org/about/help/">Help page</a></li>
-<li><a href="https://julialang.org/community/">Community resources</a></li>
-<li><a href="https://discourse.julialang.org/">Discourse forum</a></li>
-<li><a href="https://julialang.zulipchat.com/register/">Zulip</a></li>
-<li><a href="https://julialang.org/slack/">Slack</a></li>
-<li><a href="https://github.com/JuliaCommunity/StartHere.jl">StartHere.jl</a></li>
-</ul>
+<p>Before you write any line of code, it’s good to know where to find help. The official <a href="https://julialang.org/about/help/">help page</a> is a good place to start. In particular, the Julia <a href="https://julialang.org/community/">community</a> is always happy to guide beginners.</p>
+<p>As a rule of thumb, the <a href="https://discourse.julialang.org/">Discourse forum</a> is where you should ask your questions to make the answers discoverable for future users. If you just want to chat with someone, you have a choice between the open source <a href="https://julialang.zulipchat.com/register/">Zulip</a> and the closed source <a href="https://julialang.org/slack/">Slack</a>. Some of the vocabulary used by community members may appear unfamiliar, but don’t worry: <a href="https://github.com/JuliaCommunity/StartHere.jl">StartHere.jl</a> gives you a good overview.</p>
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<ul>
-<li><a href="https://julialang.org/downloads/">Julia downloads page</a></li>
-<li><a href="https://github.com/JuliaLang/juliaup">juliaup</a></li>
-<li><a href="https://www.microsoft.com/store/apps/9NJNWW8PVKMN">Windows Store</a></li>
-<li><a href="https://julialang.org/downloads/#current_stable_release">current stable version</a> / <a href="https://julialang.org/downloads/#long_term_support_release">long-term support version</a></li>
-</ul>
+<p>The most natural starting point to install Julia onto your system is the <a href="https://julialang.org/downloads/">Julia downloads page</a>, which will tell you to use <a href="https://github.com/JuliaLang/juliaup"><code>juliaup</code></a>.</p>
+<ol type="1">
+<li>Windows users can download Julia and <code>juliaup</code> together from the <a href="https://www.microsoft.com/store/apps/9NJNWW8PVKMN">Windows Store</a>.</li>
+<li>OSX or Linux users can execute the following terminal command:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://install.julialang.org <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In both cases, this will make the <code>juliaup</code> and <code>julia</code> commands accessible from the terminal (or Windows Powershell). On Windows this will also create an application launcher. All users can start Julia by running</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Meanwhile, <code>juliaup</code> provides <a href="https://github.com/JuliaLang/juliaup#using-juliaup">various utilities</a> to download, update, organize and switch between different Julia versions. As a bonus, you no longer have to manually specify the path to your executable. This all works thanks to adaptive shortcuts called “channels”, which allow you to access specific Julia versions without giving their exact number. For instance, the <code>release</code> channel (installed by default) will always point to the current stable version, and the <code>lts</code> channel will always point to the long-term support version.</p>
+<details>
+<summary>
+Advanced
+</summary>
+<p>To use other channels, add them to <code>juliaup</code> and put a <code>+</code> in front of the channel name when you start Julia:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">juliaup</span> add lts</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> +lts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can get an overview of the channels installed on your computer with</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">juliaup</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When new versions are tagged, the version associated with a given channel can change, which means a new executable needs to be downloaded. If you want to catch up with the latest developments, just do</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">juliaup</span> update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </section>
-<section id="repl-pkg" class="level2">
-<h2 class="anchored" data-anchor-id="repl-pkg">REPL &amp; Pkg</h2>
+<section id="repl" class="level2">
+<h2 class="anchored" data-anchor-id="repl">REPL</h2>
+<p>The Read-Eval-Print Loop (or REPL) is the most basic way to interact with Julia, check out its <a href="https://docs.julialang.org/en/v1/stdlib/REPL/">documentation</a> for details. You can start a REPL by typing <code>julia</code> into a terminal, or by clicking on the Julia application in your computer. It will allow you to play around with arbitrary Julia code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> a, b <span class="op">=</span> <span class="fl">1</span>, <span class="fl">2</span>;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> a <span class="op">+</span> b</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is the standard (Julia) mode of the REPL, but there are three other modes you need to know. Each mode is entered by typing a specific character after the <code>julia&gt;</code> prompt. Once you’re in a non-Julia mode, you stay there for every command you run. To exit it, hit backspace after the prompt and you’ll get the <code>julia&gt;</code> prompt back.</p>
+<section id="help-mode" class="level3">
+<h3 class="anchored" data-anchor-id="help-mode">Help mode (<code>?</code>)</h3>
+<p>By pressing <code>?</code> you can obtain information and metadata about Julia objects (functions, types, etc.) or unicode symbols. The query fetches the docstring of the object, which explains how to use it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>help?<span class="op">&gt;</span> println</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you don’t know the exact name you are looking for, type a word surrounded by quotes to see in which docstrings it pops up.</p>
+</section>
+<section id="package-mode" class="level3">
+<h3 class="anchored" data-anchor-id="package-mode">Package mode (<code>]</code>)</h3>
+<p>By pressing <code>]</code> you access <a href="https://github.com/JuliaLang/Pkg.jl">Pkg.jl</a>, Julia’s integrated package manager, whose <a href="https://pkgdocs.julialang.org/v1/getting-started/">documentation</a> is an absolute must-read. Pkg.jl allows you to:</p>
 <ul>
-<li><a href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL documentation</a></li>
-<li><a href="https://github.com/JuliaLang/Pkg.jl">Pkg.jl</a></li>
-<li><a href="https://pkgdocs.julialang.org/v1/getting-started/">Pkg documentation</a></li>
+<li><code>]activate</code> different local, shared or temporary environments;</li>
+<li><code>]instantiate</code> them by downloading the necessary packages;</li>
+<li><code>]add</code>, <code>]update</code> (or <code>]up</code>) and <code>]remove</code> (or <code>]rm</code>) packages;</li>
+<li>get the <code>]status</code> (or <code>]st</code>) of your current environment.</li>
 </ul>
+<p>As an illustration, this would download the package Revise.jl (see below) inside our default environment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="pp">@v1</span>.XX) pkg<span class="op">&gt;</span> add Revise</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note that the same keywords are also available in Julia mode (and that way we can actually run them for this website, which doesn’t emulate other modes of the REPL):</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"Revise"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">   Resolving</span> package versions...
+<span class="ansi-cyan-fg ansi-bold">     Project</span> No packages added to or removed from `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Project.toml`
+<span class="ansi-cyan-fg ansi-bold">    Manifest</span> No packages added to or removed from `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Manifest.toml`
+</pre>
+</div>
+</div>
+</div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">status</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Status</span> `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Project.toml`
+  <span class="ansi-bright-black-fg">[5903a43b] </span>Infiltrator v1.9.11
+  <span class="ansi-bright-black-fg">[295af30f] </span>Revise v3.15.0
+  <span class="ansi-bright-black-fg">[b77e0a4c] </span>InteractiveUtils v1.11.0
+</pre>
+</div>
+</div>
+</div>
+<p>The package mode itself also has a help mode, accessed with <code>?</code>, in case you’re lost among all these new keywords.</p>
+</section>
+<section id="shell-mode" class="level3">
+<h3 class="anchored" data-anchor-id="shell-mode">Shell mode (<code>;</code>)</h3>
+<p>By pressing <code>;</code> you enter a terminal, where you can execute any command you want. Here’s an example for Unix systems:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>shell<span class="op">&gt;</span> ls .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 </section>
 <section id="editor" class="level2">
 <h2 class="anchored" data-anchor-id="editor">Editor</h2>
-<ul>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li><a href="https://www.julia-vscode.org/">Julia VSCode extension</a></li>
-<li><a href="https://www.julia-vscode.org/docs/stable/">documentation</a></li>
-<li><a href="https://www.julia-vscode.org/docs/stable/userguide/keybindings/">keyboard shortcuts</a></li>
-<li><a href="https://vscodium.com/">VSCodium</a></li>
-<li><a href="https://www.gnu.org/software/emacs/">Emacs</a></li>
-<li><a href="https://www.vim.org/">Vim</a></li>
-<li><a href="https://github.com/JuliaEditorSupport">JuliaEditorSupport</a></li>
-<li><a href="https://juliamono.netlify.app/">JuliaMono</a></li>
-</ul>
+<p>Most computer programs are just plain text files with a specific extension (in our case <code>.jl</code>). So in theory, any text editor suffices to write and modify Julia code. In practice, an Integrated Development Environment (or IDE) makes the experience much more pleasant, thanks to code-related utilities and language-specific plugins.</p>
+<p>The best IDE for Julia is <a href="https://code.visualstudio.com/">Visual Studio Code</a>, or VSCode, developed by Microsoft from an open-source foundation. Indeed, the <a href="https://www.julia-vscode.org/">Julia VSCode extension</a> is the most feature-rich of all Julia IDE plugins. You can download it from the VSCode Marketplace and read its <a href="https://www.julia-vscode.org/docs/stable/">documentation</a>. In what follows, we will sometimes mention commands and <a href="https://www.julia-vscode.org/docs/stable/userguide/keybindings/">keyboard shortcuts</a> provided by this extension. But the only shortcut you need to remember is <code>Ctrl + Shift + P</code> (or <code>Cmd + Shift + P</code> on Mac): this opens the VSCode command palette, in which you can search for any command. Type “julia” in the command palette to see what you can do.</p>
+<p>A more modern language server called <a href="https://github.com/aviatesk/JETLS.jl">JETLS.jl</a> is currently under development, along with its VSCode extension <a href="https://marketplace.visualstudio.com/items?itemName=aviatesk.jetls-client"><code>jetls-client</code></a>. Feel free to try it but expect rougher edges.</p>
+<details>
+<summary>
+Advanced
+</summary>
+<p>Assuming you want to avoid the Microsoft ecosystem, <a href="https://vscodium.com/">VSCodium</a> is a nearly bit-for-bit replacement for VSCode, but with an open source license and without telemetry. If you don’t want to use VSCode at all, other options include <a href="https://www.gnu.org/software/emacs/">Emacs</a> and <a href="https://www.vim.org/">Vim</a>. Check out <a href="https://github.com/JuliaEditorSupport">JuliaEditorSupport</a> to see if your favorite IDE has a Julia plugin. The available functionalities should be roughly similar to those of VSCode, at least for the basic aspects like running code.</p>
+<p>You may also want to download the <a href="https://juliamono.netlify.app/">JuliaMono</a> font for esthetically pleasant unicode handling.</p>
+</details>
 </section>
 <section id="running-code" class="level2">
 <h2 class="anchored" data-anchor-id="running-code">Running code</h2>
+<p>You can execute a Julia script from your terminal, but in most cases that is not what you want to do.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> myfile.jl  <span class="co"># avoid this</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Julia has a rather high startup and compilation latency. If you only use scripts, you will pay this cost every time you run a slightly modified version of your code. That is why many Julia developers fire up a REPL at the beginning of the day and run all of their code there, chunk by chunk, in an interactive way. Full files can be run interactively from the REPL with the <code>include</code> function.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"myfile.jl"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Alternatively, <code>includet</code> from the <a href="https://timholy.github.io/Revise.jl/stable/user_reference/#Revise.includet">Revise.jl</a> package can be used to “include and track” a file. This will automatically update changes to function definitions in the file in the running REPL session.</p>
+<p><a href="https://www.julia-vscode.org/docs/stable/userguide/runningcode/">Executing lines of code</a> in VSCode is made much easier by the following commands:</p>
 <ul>
-<li><a href="https://timholy.github.io/Revise.jl/stable/user_reference/#Revise.includet">Revise.jl</a></li>
+<li><code>Julia: Restart REPL</code> (shortcut <code>Alt + J</code> then <code>Alt + R</code>) - this will open or restart the integrated Julia REPL. It is different from opening a plain VSCode terminal and launching Julia manually from there.</li>
+<li><code>Julia: Execute Code in REPL and Move</code> (shortcut <code>Shift + Enter</code>) - this will execute the selected code in the integrated Julia REPL, like a notebook.</li>
 </ul>
+<p>When keeping the same REPL open for a long time, it’s common to end up with a “polluted” workspace where the definitions of certain variables or functions have been overwritten in unexpected ways. This, along with other events like <code>struct</code> redefinitions, might force you to restart your REPL now and again, and that’s okay.</p>
+<section id="notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="notebooks">Notebooks</h3>
+<p>Notebooks are a popular alternative to IDEs when it comes to short and self-contained code, typically in data science. They are also a good fit for literate programming, where lines of code are interspersed with comments and explanations.</p>
+<p>The most well-known notebook ecosystem is <a href="https://jupyter.org/">Jupyter</a>, which supports Julia, Python and R as its three core languages. To use it with Julia, you will need to install the <a href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a> backend. Then, if you have also <a href="https://jupyter.org/install">installed Jupyter</a> with <code>pip install jupyterlab</code>, you can run this command to launch the server:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you only have IJulia.jl on your system, you can run this snippet instead:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">IJulia;</span> IJulia.notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Jupyter notebooks can be opened, modified and run directly from the VSCode editor. Thanks to the Julia extension, you don’t even need to install IJulia.jl or Jupyter first.</p>
+<p>A pure-Julia alternative to Jupyter is given by <a href="https://plutojl.org/">Pluto.jl</a>. Unlike Jupyter notebooks, Pluto notebooks are</p>
+<ul>
+<li>Reactive: when you update a cell, the other cells depending on it are updated.</li>
+<li>Reproducible: they come bundled with an exhaustive list of dependencies that are installed automatically.</li>
+</ul>
+<p>To try them out, install the package and then run</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Pluto;</span> Pluto.run()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details>
+<summary>
+Advanced
+</summary>
+For enhanced notebook-style development outside of the traditional notebook interfaces, <a href="https://github.com/MasonProtter/CodeCells.jl">CodeCells.jl</a> provides code cell functionality that can be integrated into other development workflows, bridging the gap between notebook-style development and traditional script editing.
+</details>
 </section>
-<section id="notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="notebooks">Notebooks</h2>
-<ul>
-<li><a href="https://jupyter.org/">Jupyter</a></li>
-<li><a href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a></li>
-<li><a href="https://plutojl.org/">Pluto.jl</a></li>
-<li><a href="https://github.com/MasonProtter/CodeCells.jl">CodeCells.jl</a></li>
-</ul>
 </section>
 <section id="markdown" class="level2">
 <h2 class="anchored" data-anchor-id="markdown">Markdown</h2>
-<ul>
-<li><a href="https://www.markdownguide.org/">Markdown</a></li>
-</ul>
+<p><a href="https://www.markdownguide.org/">Markdown</a> is a markup language used to add formatting elements to plain text text files.</p>
+<p>Standard Markdown files, which have the <code>.md</code> extension, are not used for interactive programming, meaning one cannot run code written in the file.</p>
+<p>This is an example of a standard markdown file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Title</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section Header</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>This is example text.</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="in">```julia</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"hello world"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="quarto" class="level3">
 <h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
-<ul>
-<li><a href="https://quarto.org/">Quarto</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">extension</a></li>
-<li><a href="https://quarto.org/docs/blog/posts/2024-07-11-1.5-release/#native-julia-engine">documentation</a></li>
-</ul>
+<p><a href="https://quarto.org/">Quarto</a> is an open-source scientific and technical publishing system. Quarto provides a Markdown variant with the <code>.qmd</code> extension. Quarto markdown files, like standard Markdown files, also integrate with editors such as VSCode. Install the Quarto <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">extension</a> for a streamlined experience.</p>
+<p>Unlike standard markdown files however , Quarto markdown files have executable code chunks, which makes them an alternative to notebooks. Additionally, Quarto markdown files give users control over output and styling via the YAML header at the top of the <code>.qmd</code> file.</p>
+<p>Below is an example of a Quarto markdown file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My document"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">  # renders a HTML document</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">    # table of contents</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">  # makes code chunks invisible in the output</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">  # code output is still visible though</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: false</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">  # hides warnings in the output</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># native julia engine</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> julia</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Title</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section Header</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>Below is an executable code chunk.</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>If this file were opened in an editor</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>such as VSCode, one could execute the</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="in">`println("hello world")`</span> Julia code and</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>view the output, like in a notebook.</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"hello world"</span>)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="environments" class="level2">
 <h2 class="anchored" data-anchor-id="environments">Environments</h2>
+<p>As we have seen, Pkg.jl is the Julia equivalent of <code>pip</code> or <code>uv</code> for Python. It lets you <a href="https://pkgdocs.julialang.org/v1/managing-packages/">install packages</a> and <a href="https://pkgdocs.julialang.org/v1/environments/">manage environments</a> (collections of packages with specific versions).</p>
+<p>You can activate an environment from the Pkg REPL by specifying its path <code>]activate somepath</code>. You create new environments simply by activating a path that does not contain an environment. The necessary files are created automatically once you <code>]add</code> packages. Typically, you would do <code>]activate .</code> to activate the environment in the current directory. Another option is to directly start Julia inside an environment, with the command line option <code>julia --project=somepath</code>.</p>
+<p>Once in an environment, the packages you <code>]add</code> will be listed in two files <code>somepath/Project.toml</code> and <code>somepath/Manifest.toml</code>:</p>
 <ul>
-<li><a href="https://pkgdocs.julialang.org/v1/managing-packages/">install packages</a></li>
-<li><a href="https://pkgdocs.julialang.org/v1/environments/">manage environments</a></li>
-<li><a href="https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks">environment stacking</a></li>
-<li><a href="https://www.julia-vscode.org/docs/stable/userguide/env/">environment</a></li>
-<li><a href="https://github.com/peng1999/PkgDependency.jl">PkgDependency.jl</a></li>
+<li><code>Project.toml</code> contains general project information (name of the package, unique id, authors) and direct dependencies with version bounds.</li>
+<li><code>Manifest.toml</code> contains the exact versions of all direct and indirect dependencies</li>
 </ul>
+<p>If you haven’t activated any local project, packages will be installed in the default environment, called <code>@v1.XX</code> after the active version of Julia (note the <code>@</code> before the name). Packages installed that way are available no matter which local environment is active, because of “environment <a href="https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks">stacking</a>”. It is recommended to keep the default environment very light to avoid dependency conflicts: put only essential development tools in there. Then, for each of your projects, create a separate local environment to contain the dependencies specific to that project.</p>
+<p>You can configure the <a href="https://www.julia-vscode.org/docs/stable/userguide/env/">environment</a> in which a VSCode Julia REPL opens. Just click the <code>Julia env: ...</code> button at the bottom. Note however that the Julia version itself will always be the default one from <code>juliaup</code>.</p>
+<details>
+<summary>
+Advanced
+</summary>
+You can visualize the dependency graph of an environment with <a href="https://github.com/peng1999/PkgDependency.jl">PkgDependency.jl</a>.
+</details>
 </section>
 <section id="local-packages" class="level2">
 <h2 class="anchored" data-anchor-id="local-packages">Local packages</h2>
-<ul>
-<li><a href="https://pkgdocs.julialang.org/v1/creating-packages/">create a package</a></li>
-<li><a href="https://docs.julialang.org/en/v1/manual/modules/">module</a></li>
-</ul>
+<p>Once your code base grows beyond a few scripts, you will want to <a href="https://pkgdocs.julialang.org/v1/creating-packages/">create a package</a> of your own. The first advantage is that you don’t need to specify the path of every file: <code>using MyPackage: myfunc</code> is enough to get access to the names you define. Furthermore, you can specify versions for your package and its dependencies, making your code easier and safer to reuse.</p>
+<p>To create a new package locally, one easy way is to use <code>]generate</code>. We will discuss more sophisticated workflows, including a graphical tool, in the next blog post.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="pp">@v1</span>.XX) pkg<span class="op">&gt;</span> generate MyPackage</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This command initializes a simple folder with a <code>Project.toml</code> and a <code>src</code> subfolder. As we have seen, the <code>Project.toml</code> specifies the dependencies. Meanwhile, the <code>src</code> subfolder contains a file <code>MyPackage.jl</code>, where a <a href="https://docs.julialang.org/en/v1/manual/modules/">module</a> called <code>MyPackage</code> is defined. It is the heart of your package, and will typically look like this once you’re done:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> MyPackage</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># imported dependencies</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">OtherPackage1</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">OtherPackage2</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># files defining functions, types, etc.</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"file1.jl"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"subfolder/file2.jl"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># names you want to make public</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> myfunc</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="kw">export</span> MyType</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="development-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="development-workflow">Development workflow</h2>
+<p>Once you have created a package, your daily routine will look like this:</p>
+<ol type="1">
+<li>Open a REPL in which you import <code>MyPackage</code></li>
+<li>Run some functions interactively, either by writing them directly in the REPL or from a Julia file that you use as a notebook</li>
+<li>Modify some files in <code>MyPackage</code></li>
+<li>Go back to step 2</li>
+</ol>
+<p>For that to work well, you need code modifications to be taken into account automatically. That is why <a href="https://github.com/timholy/Revise.jl">Revise.jl</a> exists. In fact, it is used by so many Julia developers that some wish it were part of the core language: you can read its <a href="https://timholy.github.io/Revise.jl/stable/">documentation</a> for more details. If you start every REPL session by importing Revise.jl, then all the other packages you import after that will have their code tracked. Whenever you edit a source file and hit save, the REPL will update its state accordingly. The Julia extension imports Revise.jl by default when it starts a REPL, provided it is installed in the default environment.</p>
+<p>The only remaining question is: in which environment should you work? In general, you can work within the environment defined by your package, and add all the dependencies you need there. To summarize, this is how you get started:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Revise</span>, <span class="bu">Pkg</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="st">"./MyPackage"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MyPackage</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>MyPackage.<span class="fu">myfunc</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details>
+<summary>
+Advanced
+</summary>
+<p>There are situations where the previous method does not work:</p>
 <ul>
-<li><a href="https://github.com/timholy/Revise.jl">Revise.jl</a></li>
-<li><a href="https://timholy.github.io/Revise.jl/stable/">documentation</a></li>
-<li><a href="https://pkgdocs.julialang.org/v1/environments/#Shared-environments">shared</a></li>
-<li><a href="https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks">stacked</a></li>
-<li><a href="https://github.com/Eben60/ShareAdd.jl">ShareAdd.jl</a></li>
+<li>if you are developing several packages at once and want to use them together</li>
+<li>if your interactive work requires heavy dependencies that your package itself does not need (for instance plotting).</li>
 </ul>
+<p>Then, you will need to use another environment as a playground, and <code>]develop</code> (or <code>]dev</code>) your package(s) into it. Note the new Pkg.jl keyword: <code>]add PackageName</code> is used to download a fixed version of a registered package, while <code>]develop path</code> links to the current state of the code in a local folder. To summarize, this is how you get started:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Revise</span>, <span class="bu">Pkg</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="st">"./MyPlayground"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">develop</span>(path<span class="op">=</span><span class="st">"./MyPackage"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MyPackage</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>MyPackage.<span class="fu">myfunc</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+For the common case of dependencies needed for interactive work only, <a href="https://pkgdocs.julialang.org/v1/environments/#Shared-environments">shared</a> or <a href="https://docs.julialang.org/en/v1/manual/code-loading/#Environment-stacks">stacked</a> environments are another practical solution. <a href="https://github.com/Eben60/ShareAdd.jl">ShareAdd.jl</a> can help you in using and managing these (see its documentation).
+</details>
 </section>
 <section id="configuration" class="level2">
 <h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<p>Julia accepts <a href="https://docs.julialang.org/en/v1/manual/command-line-interface/#command-line-interface">startup flags</a> to handle settings such as the number of threads available or the environment in which it launches. Most Julia developers also have a <a href="https://docs.julialang.org/en/v1/manual/command-line-interface/#Startup-file">startup file</a> which is run automatically every time the language is started. It is located at <code>.julia/config/startup.jl</code>.</p>
+<p>The basic component that everyone puts in the startup file is Revise.jl:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">using</span> <span class="bu">Revise</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> <span class="cn">e</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@warn</span> <span class="st">"Error initializing Revise"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In addition, users commonly import packages that affect the REPL experience, as well as esthetic, benchmarking or profiling utilities. A typical example is <a href="https://github.com/KristofferC/OhMyREPL.jl">OhMyREPL.jl</a> which is widely used for syntax highlighting in the REPL. More generally, the startup file allows you to define your own favorite helper functions and have them immediately available in every Julia session. <a href="https://github.com/abraemer/StartupCustomizer.jl">StartupCustomizer.jl</a> can help you set up your startup file.</p>
+<details>
+<summary>
+Advanced
+</summary>
+<p>Here are a few more startup packages that can make your life easier once you know the language better:</p>
 <ul>
-<li><a href="https://docs.julialang.org/en/v1/manual/command-line-interface/#command-line-interface">startup flags</a></li>
-<li><a href="https://docs.julialang.org/en/v1/manual/command-line-interface/#Startup-file">startup file</a></li>
-<li><a href="https://github.com/KristofferC/OhMyREPL.jl">OhMyREPL.jl</a></li>
-<li><a href="https://github.com/abraemer/StartupCustomizer.jl">StartupCustomizer.jl</a></li>
-<li><a href="https://github.com/BioTurboNick/AbbreviatedStackTraces.jl">AbbreviatedStackTraces.jl</a></li>
-<li><a href="https://github.com/BioTurboNick/AbbreviatedStackTraces.jl/issues/38">interactions with VSCode</a></li>
-<li><a href="https://github.com/FedeClaudi/Term.jl">Term.jl</a></li>
-<li><a href="https://fedeclaudi.github.io/Term.jl/stable/adv/adv/">advanced configuration</a></li>
+<li><a href="https://github.com/BioTurboNick/AbbreviatedStackTraces.jl">AbbreviatedStackTraces.jl</a> allows you to shorten error stacktraces, which can sometimes get pretty long (beware of its <a href="https://github.com/BioTurboNick/AbbreviatedStackTraces.jl/issues/38">interactions with VSCode</a>)</li>
+<li><a href="https://github.com/FedeClaudi/Term.jl">Term.jl</a> offers a completely new way to display things like types and errors (see the <a href="https://fedeclaudi.github.io/Term.jl/stable/adv/adv/">advanced configuration</a> to enable it by default).</li>
 </ul>
-</section>
+<details>
+</details></details></section>
 <section id="interactivity" class="level2">
 <h2 class="anchored" data-anchor-id="interactivity">Interactivity</h2>
+<p>The Julia REPL comes bundled with <a href="https://docs.julialang.org/en/v1/stdlib/InteractiveUtils/">InteractiveUtils.jl</a>, a bunch of very useful functions for interacting with source code.</p>
+<p>Here are a few examples:</p>
+<div id="8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">supertypes</span>(<span class="dt">Int64</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(Int64, Signed, Integer, Real, Number, Any)</code></pre>
+</div>
+</div>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(<span class="dt">Integer</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>3-element Vector{Any}:
+ Bool
+ Signed
+ Unsigned</code></pre>
+</div>
+</div>
+<div id="12" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">methodswith</span>(<span class="dt">Integer</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>668</code></pre>
+</div>
+</div>
+<div id="14" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@which</span> <span class="fu">exp</span>(<span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+exp(x::<b>Real</b>) in Base.Math at <a href="https://github.com/JuliaLang/julia/tree/15346901f0039751c5488744f1f62de7d87510a8/base/math.jl#L1543" target="_blank">math.jl:1543</a>
+</div>
+</div>
+<div id="16" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">"matrix exponential"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Base.:^
+Base.exp</code></pre>
+</div>
+</div>
+<p>When you ask for help on a Julia forum, you might want to include your local Julia information:</p>
+<div id="18" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">versioninfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Julia Version 1.12.6
+Commit 15346901f00 (2026-04-09 19:20 UTC)
+Build Info:
+  Official https://julialang.org release
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: 4 × AMD EPYC 7763 64-Core Processor
+  WORD_SIZE: 64
+  LLVM: libLLVM-18.1.7 (ORCJIT, znver3)
+  GC: Built with stock GC
+Threads: 1 default, 1 interactive, 1 GC (on 4 virtual cores)
+Environment:
+  JULIA_PROJECT = @.
+  JULIA_LOAD_PATH = @:@stdlib</code></pre>
+</div>
+</div>
+<details>
+<summary>
+Advanced
+</summary>
+<p>The following packages can give you even more interactive power:</p>
 <ul>
-<li><a href="https://docs.julialang.org/en/v1/stdlib/InteractiveUtils/">InteractiveUtils.jl</a></li>
-<li><a href="https://github.com/tecosaur/About.jl">About.jl</a></li>
-<li><a href="https://github.com/tkf/InteractiveCodeSearch.jl">InteractiveCodeSearch.jl</a></li>
-<li><a href="https://github.com/MichaelHatherly/InteractiveErrors.jl">InteractiveErrors.jl</a></li>
-<li><a href="https://github.com/timholy/CodeTracking.jl">CodeTracking.jl</a></li>
+<li><a href="https://github.com/tecosaur/About.jl">About.jl</a> to look for detailed information about a function, type, value, or something else entirely.</li>
+<li><a href="https://github.com/tkf/InteractiveCodeSearch.jl">InteractiveCodeSearch.jl</a> to look for a precise implementation of a function.</li>
+<li><a href="https://github.com/MichaelHatherly/InteractiveErrors.jl">InteractiveErrors.jl</a> to navigate through stacktraces.</li>
+<li><a href="https://github.com/timholy/CodeTracking.jl">CodeTracking.jl</a> to extend InteractiveUtils.jl</li>
 </ul>
+</details>
 </section>
 <section id="logging" class="level2">
 <h2 class="anchored" data-anchor-id="logging">Logging</h2>
+<p>When you encounter a problem in your code or want to track progress, a common reflex is to add <code>print</code> statements everywhere.</p>
+<div id="20" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">printing_func</span>(n)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(i<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>printing_func (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="22" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printing_func</span>(<span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+4
+9</code></pre>
+</div>
+</div>
+<p>A slight improvement is given by the <code>@show</code> macro, which displays the variable name:</p>
+<div id="24" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">showing_func</span>(n)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@show</span> i<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>showing_func (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="26" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showing_func</span>(<span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>i ^ 2 = 1
+i ^ 2 = 4
+i ^ 2 = 9</code></pre>
+</div>
+</div>
+<p>But you can go even further with the macros <code>@debug</code>, <code>@info</code>, <code>@warn</code> and <code>@error</code>. They have several advantages over printing:</p>
 <ul>
-<li><a href="https://docs.julialang.org/en/v1/stdlib/Logging/">documentation</a></li>
-<li><a href="https://github.com/JuliaLogging/ProgressLogging.jl">ProgressLogging.jl</a></li>
-<li><a href="https://github.com/JuliaIO/Suppressor.jl">Suppressor.jl</a></li>
+<li>They display variable names and a custom message</li>
+<li>They show the line number they were called from</li>
+<li>They can be disabled and filtered according to source module and severity level</li>
+<li>They work well in multithreaded code</li>
+<li>They can write their output to a file</li>
 </ul>
+<div id="28" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">warning_func</span>(n)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="pp">@warn</span> <span class="st">"This is bad"</span> i<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>warning_func (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="30" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">warning_func</span>(<span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>This is bad
+<span class="ansi-yellow-fg ansi-bold">│ </span>  i ^ 2 = 1
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537</span>
+<span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>This is bad
+<span class="ansi-yellow-fg ansi-bold">│ </span>  i ^ 2 = 4
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537</span>
+<span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>This is bad
+<span class="ansi-yellow-fg ansi-bold">│ </span>  i ^ 2 = 9
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537</span>
+</pre>
+</div>
+</div>
+</div>
+<p>Refer to the logging <a href="https://docs.julialang.org/en/v1/stdlib/Logging/">documentation</a> for more information.</p>
+<p>Beyond the built-in logging utilities, <a href="https://github.com/JuliaLogging/ProgressLogging.jl">ProgressLogging.jl</a> has a macro <code>@progress</code>, which interfaces nicely with VSCode and Pluto to display progress bars. And <a href="https://github.com/JuliaIO/Suppressor.jl">Suppressor.jl</a> can sometimes be handy when you need to suppress warnings or other bothersome messages (use at your own risk).</p>
+<details>
+<summary>
+Advanced
+</summary>
+<p>Note that <code>@debug</code> messages are suppressed by default. You can enable them through the <code>JULIA_DEBUG</code> environment variable if you specify the source module name, typically <code>Main</code> or your package module.</p>
+</details>
 </section>
 <section id="debugging" class="level2">
 <h2 class="anchored" data-anchor-id="debugging">Debugging</h2>
+<p>The problem with printing or logging is that you cannot interact with local variables or save them for further analysis. The following two packages solve this issue, and they probably belong in your default environment <code>@v1.XX</code>, like Revise.jl.</p>
 <section id="setting" class="level3">
 <h3 class="anchored" data-anchor-id="setting">Setting</h3>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Fermat_number">Fermat number</a></li>
-</ul>
+<p>Assume you want to debug a function checking whether the <span class="math inline">\(n\)</span>-th <a href="https://en.wikipedia.org/wiki/Fermat_number">Fermat number</a> <span class="math inline">\(F_n = 2^{2^n} + 1\)</span> is prime:</p>
+<div id="32" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Infiltrator</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">fermat_prime</span>(n)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>k <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">isqrt</span>(F)  <span class="co"># integer square root</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> F <span class="op">%</span> d <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">false</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cn">true</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>fermat_prime (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="34" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fermat_prime</span>(<span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>true</code></pre>
+</div>
+</div>
+<div id="36" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fermat_prime</span>(<span class="fl">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>true</code></pre>
+</div>
+</div>
+<p>Unfortunately, <span class="math inline">\(F_4 = 65537\)</span> is the largest known Fermat prime, which means <span class="math inline">\(F_6\)</span> is incorrectly classified. Let’s investigate why this happens!</p>
 </section>
 <section id="infiltrator.jl" class="level3">
 <h3 class="anchored" data-anchor-id="infiltrator.jl">Infiltrator.jl</h3>
-<ul>
-<li><a href="https://github.com/JuliaDebug/Infiltrator.jl">Infiltrator.jl</a></li>
-<li><a href="https://docs.julialang.org/en/v1/manual/faq/#faq-integer-arithmetic">integer overflow</a></li>
-</ul>
+<p><a href="https://github.com/JuliaDebug/Infiltrator.jl">Infiltrator.jl</a> is a lightweight inspection package, which will not slow down your code at all. Its <code>@infiltrate</code> macro allows you to directly set breakpoints in your code. Calling a function which hits a breakpoint will activate the Infiltrator REPL-mode and change the prompt to <code>infil&gt;</code>. Typing <code>?</code> in this mode will summarize available commands. For example, typing <code>@locals</code> in Infiltrator-mode will print local variables:</p>
+<div id="38" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Infiltrator</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">fermat_prime_infil</span>(n)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>k <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@infiltrate</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">isqrt</span>(F)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> F <span class="op">%</span> d <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="cn">false</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cn">true</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>fermat_prime_infil (generic function with 1 method)</code></pre>
+</div>
+</div>
+<p>What makes Infiltrator.jl even more powerful is the <code>@exfiltrate</code> macro, which allows you to move local variables into a global storage called the <code>safehouse</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">fermat_prime_infil</span>(<span class="fl">6</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>Infiltrating <span class="fu">fermat_prime_infil</span>(n<span class="op">::</span><span class="dt">Int64</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  at <span class="bu">REPL</span>[<span class="fl">2</span>]<span class="op">:</span><span class="fl">4</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>infil<span class="op">&gt;</span> <span class="pp">@exfiltrate</span> k F</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>Exfiltrating <span class="fl">2</span> <span class="kw">local</span> variables into the safehouse.</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>infil<span class="op">&gt;</span> <span class="pp">@continue</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="cn">true</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> safehouse.k</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="fl">64</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> safehouse.F</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The diagnosis is a classic one: <a href="https://docs.julialang.org/en/v1/manual/faq/#faq-integer-arithmetic">integer overflow</a>. Indeed, <span class="math inline">\(2^{64}\)</span> is larger than the maximum integer value in Julia:</p>
+<div id="40" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typemax</span>(<span class="dt">Int</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="op">^</span><span class="fl">63</span><span class="op">-</span><span class="fl">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>9223372036854775807</code></pre>
+</div>
+</div>
+<p>And the solution is to call our function on “big” integers with an arbitrary number of bits:</p>
+<div id="42" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fermat_prime</span>(<span class="fu">big</span>(<span class="fl">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>false</code></pre>
+</div>
+</div>
 </section>
 <section id="debugger.jl" class="level3">
 <h3 class="anchored" data-anchor-id="debugger.jl">Debugger.jl</h3>
-<ul>
-<li><a href="https://github.com/JuliaDebug/Debugger.jl">Debugger.jl</a></li>
-<li><a href="https://github.com/JuliaDebug/Debugger.jl#debugger-commands">custom navigation commands</a></li>
-<li><a href="https://www.julia-vscode.org/docs/stable/userguide/debugging/">graphical interface for debugging</a></li>
-</ul>
+<p><a href="https://github.com/JuliaDebug/Debugger.jl">Debugger.jl</a> allows us to interrupt code execution anywhere we want, even in functions we did not write. Using its <code>@enter</code> macro, we can enter a function call and walk through the call stack, at the cost of reduced performance.</p>
+<p>The REPL prompt changes to <code>1|debug&gt;</code>, allowing you to use <a href="https://github.com/JuliaDebug/Debugger.jl#debugger-commands">custom navigation commands</a> to step into and out of function calls, show local variables and set breakpoints. Typing a backtick <code>`</code> will change the prompt to <code>1|julia&gt;</code>, indicating evaluation mode. Any expression typed in this mode will be evaluated in the local context. This is useful to show local variables, as demonstrated in the following example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="im">using</span> <span class="bu">Debugger</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="pp">@enter</span> <span class="fu">fermat_prime</span>(<span class="fl">6</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>In <span class="fu">fermat_prime</span>(n) at <span class="bu">REPL</span>[<span class="fl">7</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="kw">function</span> <span class="fu">fermat_prime</span>(n)</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span><span class="fl">2</span>      k <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a> <span class="fl">3</span>      F <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>k <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a> <span class="fl">4</span>      <span class="cf">for</span> d <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">isqrt</span>(F)  <span class="co"># integer square root</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a> <span class="fl">5</span>          <span class="cf">if</span> F <span class="op">%</span> d <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a> <span class="fl">6</span>              <span class="cf">return</span> <span class="cn">false</span></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>About to run<span class="op">:</span> (<span class="op">^</span>)(<span class="fl">2</span>, <span class="fl">6</span>)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">|</span>debug<span class="op">&gt;</span> n</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>In <span class="fu">fermat_prime</span>(n) at <span class="bu">REPL</span>[<span class="fl">7</span>]<span class="op">:</span><span class="fl">1</span></span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a> <span class="fl">1</span>  <span class="kw">function</span> <span class="fu">fermat_prime</span>(n)</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a> <span class="fl">2</span>      k <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span><span class="fl">3</span>      F <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>k <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a> <span class="fl">4</span>      <span class="cf">for</span> d <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">isqrt</span>(F)  <span class="co"># integer square root</span></span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a> <span class="fl">5</span>          <span class="cf">if</span> F <span class="op">%</span> d <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a> <span class="fl">6</span>              <span class="cf">return</span> <span class="cn">false</span></span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a> <span class="fl">7</span>          <span class="cf">end</span></span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a>About to run<span class="op">:</span> (<span class="op">^</span>)(<span class="fl">2</span>, <span class="fl">64</span>)</span>
+<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span><span class="op">|</span>julia<span class="op">&gt;</span> k</span>
+<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a><span class="fl">64</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>VSCode offers a nice <a href="https://www.julia-vscode.org/docs/stable/userguide/debugging/">graphical interface for debugging</a>. Click left of a line number in an editor pane to add a <em>breakpoint</em>, which is represented by a red circle. In the debugging pane of the Julia extension, click <code>Run and Debug</code> to start the debugger. The program will automatically halt when it hits a breakpoint. Using the toolbar at the top of the editor, you can then <em>continue</em>, <em>step over</em>, <em>step into</em> and <em>step out</em> of your code. The debugger will open a pane showing information about the code such as local variables inside of the current function, their current values and the full call stack.</p>
+<details>
+<summary>
+Advanced
+</summary>
+The debugger can be <a href="https://www.julia-vscode.org/docs/dev/userguide/debugging/#Settings-to-speed-up-the-debugger">sped up</a> by selectively compiling modules that you will not need to step into via the <code>+</code> symbol at the bottom of the debugging pane. It is often easiest to start by adding <code>ALL_MODULES_EXCEPT_MAIN</code> to the compiled list, and then selectively remove the modules you need to have interpreted by typing their name into the same <code>+</code> menu but with a <code>-</code> sign in front e.g.&nbsp;<code>-MyModule</code>.
+</details>
 
 
 </section>

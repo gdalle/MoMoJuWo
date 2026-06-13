@@ -2,9 +2,9 @@
 
 ## Pages
 
-- [MoMoJuWo](https://gdalle.github.io/MoMoJuWo/index.llms.md)
-- [Optimizing](https://gdalle.github.io/MoMoJuWo/pages/optimizing/index.llms.md)
+- [More Modern Julia Workflows](https://gdalle.github.io/MoMoJuWo/index.llms.md)
 - [Writing](https://gdalle.github.io/MoMoJuWo/pages/writing/index.llms.md)
+- [Going further](https://gdalle.github.io/MoMoJuWo/pages/further/index.llms.md)
 - [Vibing](https://gdalle.github.io/MoMoJuWo/pages/vibing/index.llms.md)
 - [Sharing](https://gdalle.github.io/MoMoJuWo/pages/sharing/index.llms.md)
-- [Going further](https://gdalle.github.io/MoMoJuWo/pages/further/index.llms.md)
+- [Optimizing](https://gdalle.github.io/MoMoJuWo/pages/optimizing/index.llms.md)

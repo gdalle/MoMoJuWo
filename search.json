@@ -1,171 +1,171 @@
 [
   {
-    "objectID": "pages/optimizing/index.html",
-    "href": "pages/optimizing/index.html",
-    "title": "Optimizing",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "More Modern Julia Workflows",
     "section": "",
-    "text": "machine code\nuntyped global variables\nofficial performance tips"
+    "text": "A collection of resources on best practices for Julia development. This is an attempt at revamping the original Modern Julia Workflows."
   },
   {
-    "objectID": "pages/optimizing/index.html#principles",
-    "href": "pages/optimizing/index.html#principles",
-    "title": "Optimizing",
-    "section": "",
-    "text": "machine code\nuntyped global variables\nofficial performance tips"
+    "objectID": "index.html#goals",
+    "href": "index.html#goals",
+    "title": "More Modern Julia Workflows",
+    "section": "Goals",
+    "text": "Goals\nOur purpose is to gather the hidden tips and tricks of Julia development, to make them easily accessible to beginners. We do not cover syntax, assuming that the reader is familiar enough with the basics of Julia. Instead, we focus on all the tools and packages that make the coding experience more pleasant and efficient."
   },
   {
-    "objectID": "pages/optimizing/index.html#measurements",
-    "href": "pages/optimizing/index.html#measurements",
-    "title": "Optimizing",
-    "section": "Measurements",
-    "text": "Measurements\n\ngarbage collector\n\n\nBenchmarkTools\n\nBenchmarkTools.jl\ninterpolate external values\nsetup phase\n\n\n\nChairmarks\n\nChairmarks.jl\nChairmarks documentation\nPrettyChairmarks.jl\n\n\n\nBenchmark suites\n\nPkgBenchmark.jl\nBenchmarkCI.jl\nAirSpeedVelocity.jl\nPkgJogger.jl\nJulia-TTFX-Snippets\n\n\n\nOther tools\n\nTimerOutputs.jl\nhyperfine\nProgressMeter.jl\nProgressLogging.jl"
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "More Modern Julia Workflows",
+    "section": "Contents",
+    "text": "Contents\nThere are three blog posts of increasing technical difficulty, plus one page of additional links:\n\nWriting: from zero to a basic script\nSharing: from a basic script to a reliable package\nOptimizing: from a basic script to a light-speed algorithm\nVibing: from a zero to a basic script you didn’t write\nGoing further: other websites to help you dive deeper into the rabbit hole\n\nThese are all fairly long and not meant to be read in one sitting, so take your time. Keep in mind that while each of these resources can be useful to you, not every one of them will be. But at least you will know where to look in case you have a specific question."
   },
   {
-    "objectID": "pages/optimizing/index.html#profiling",
-    "href": "pages/optimizing/index.html#profiling",
-    "title": "Optimizing",
-    "section": "Profiling",
-    "text": "Profiling\n\nSampling\n\none for runtime\none for memory\n\n\n\nVisualization tools\n\nProfileView.jl\nPProf.jl\npprof\nProfileSVG.jl\nProfileCanvas.jl\nStatProfilerHTML.jl\n\n\n\nExternal profilers\n\nIntel VTune\nIntelITT.jl\nNVIDIA Nsight Systems\nNVTX.jl\nTracy"
-  },
-  {
-    "objectID": "pages/optimizing/index.html#type-stability",
-    "href": "pages/optimizing/index.html#type-stability",
-    "title": "Optimizing",
-    "section": "Type stability",
-    "text": "Type stability\n\nJET.jl\nparametric types\n@code_warntype\noptimization analysis\ntest integrations\nstatic linter\nCthulhu.jl\nvideo example\nimprove type inference\nDispatchDoctor.jl"
-  },
-  {
-    "objectID": "pages/optimizing/index.html#memory-management",
-    "href": "pages/optimizing/index.html#memory-management",
-    "title": "Optimizing",
-    "section": "Memory management",
-    "text": "Memory management\n\narrays and allocations\nAllocCheck.jl"
-  },
-  {
-    "objectID": "pages/optimizing/index.html#compilation",
-    "href": "pages/optimizing/index.html#compilation",
-    "title": "Optimizing",
-    "section": "Compilation",
-    "text": "Compilation\n\nPrecompilation\n\nPrecompileTools.jl\ndocumentation\nSnoopCompile.jl\nPrecompileSignatures.jl\nPrecompileAfterUpdate.jl\n\n\n\nPackage compilation\n\nPackageCompiler.jl\nstreamlined with VSCode\n\n\n\nStatic compilation\n\napps\nlibraries\nArgParse.jl\nrelocability\nStaticCompiler.jl\nStaticTools.jl\nStaticArrays.jl\ndetailed guide\nJuliaC.jl\nBumper.jl"
-  },
-  {
-    "objectID": "pages/optimizing/index.html#parallelism",
-    "href": "pages/optimizing/index.html#parallelism",
-    "title": "Optimizing",
-    "section": "Parallelism",
-    "text": "Parallelism\n\nmultithreading\nmultiprocessing / distributed computing\n\n\nMultithreading\n\nBLAS\nLAPACK\nmultithreading and linear algebra\nOhMyThreads.jl\ntranslation guide\nPolyester.jl\nThreadPinning.jl\nLoopVectorization.jl\nOctavian.jl\nThreadsX.jl\n\n\n\nDistributed computing\n\nTransducers.jl\nFolds.jl\nMPI.jl\nMessage Passing Interface standard\nElemental.jl\nElemental\n\n\n\nGPU programming\n\nJuliaGPU\nCUDA.jl\nKernelAbstractions.jl\n\n\n\nSIMD instructions\n\nPerformance annotations\nSIMD.jl\nblog post"
-  },
-  {
-    "objectID": "pages/optimizing/index.html#efficient-types",
-    "href": "pages/optimizing/index.html#efficient-types",
-    "title": "Optimizing",
-    "section": "Efficient types",
-    "text": "Efficient types\n\nStatic arrays\n\nStaticArrays.jl\nAccessors.jl\n\n\n\nClassic data structures\n\nJuliaCollections\nDataStructures.jl\nIterTools.jl\nMemoize.jl"
+    "objectID": "index.html#before-you-start",
+    "href": "index.html#before-you-start",
+    "title": "More Modern Julia Workflows",
+    "section": "Before you start",
+    "text": "Before you start\nMany of the links you will see point to GitHub repositories for Julia packages. When you click them, they will take you to a page called README.md that contains a brief description of the package, sometimes insufficient for actual use. You can usually find more thorough documentation by clicking on a blue badge called docs|stable looking like this  at the top of the README."
   },
   {
     "objectID": "pages/writing/index.html",
     "href": "pages/writing/index.html",
     "title": "Writing",
     "section": "",
-    "text": "Help page\nCommunity resources\nDiscourse forum\nZulip\nSlack\nStartHere.jl"
+    "text": "In this post, you will learn about tools to create, run and debug Julia code."
   },
   {
     "objectID": "pages/writing/index.html#getting-help",
     "href": "pages/writing/index.html#getting-help",
     "title": "Writing",
-    "section": "",
-    "text": "Help page\nCommunity resources\nDiscourse forum\nZulip\nSlack\nStartHere.jl"
+    "section": "Getting help",
+    "text": "Getting help\nBefore you write any line of code, it’s good to know where to find help. The official help page is a good place to start. In particular, the Julia community is always happy to guide beginners.\nAs a rule of thumb, the Discourse forum is where you should ask your questions to make the answers discoverable for future users. If you just want to chat with someone, you have a choice between the open source Zulip and the closed source Slack. Some of the vocabulary used by community members may appear unfamiliar, but don’t worry: StartHere.jl gives you a good overview."
   },
   {
     "objectID": "pages/writing/index.html#installation",
     "href": "pages/writing/index.html#installation",
     "title": "Writing",
     "section": "Installation",
-    "text": "Installation\n\nJulia downloads page\njuliaup\nWindows Store\ncurrent stable version / long-term support version"
+    "text": "Installation\nThe most natural starting point to install Julia onto your system is the Julia downloads page, which will tell you to use juliaup.\n\nWindows users can download Julia and juliaup together from the Windows Store.\nOSX or Linux users can execute the following terminal command:\n\ncurl -fsSL https://install.julialang.org | sh\nIn both cases, this will make the juliaup and julia commands accessible from the terminal (or Windows Powershell). On Windows this will also create an application launcher. All users can start Julia by running\njulia\nMeanwhile, juliaup provides various utilities to download, update, organize and switch between different Julia versions. As a bonus, you no longer have to manually specify the path to your executable. This all works thanks to adaptive shortcuts called “channels”, which allow you to access specific Julia versions without giving their exact number. For instance, the release channel (installed by default) will always point to the current stable version, and the lts channel will always point to the long-term support version.\n\n\nAdvanced\n\nTo use other channels, add them to juliaup and put a + in front of the channel name when you start Julia:\njuliaup add lts\njulia +lts\nYou can get an overview of the channels installed on your computer with\njuliaup status\nWhen new versions are tagged, the version associated with a given channel can change, which means a new executable needs to be downloaded. If you want to catch up with the latest developments, just do\njuliaup update"
   },
   {
-    "objectID": "pages/writing/index.html#repl-pkg",
-    "href": "pages/writing/index.html#repl-pkg",
+    "objectID": "pages/writing/index.html#repl",
+    "href": "pages/writing/index.html#repl",
     "title": "Writing",
-    "section": "REPL & Pkg",
-    "text": "REPL & Pkg\n\nREPL documentation\nPkg.jl\nPkg documentation"
+    "section": "REPL",
+    "text": "REPL\nThe Read-Eval-Print Loop (or REPL) is the most basic way to interact with Julia, check out its documentation for details. You can start a REPL by typing julia into a terminal, or by clicking on the Julia application in your computer. It will allow you to play around with arbitrary Julia code:\njulia&gt; a, b = 1, 2;\n\njulia&gt; a + b\n3\nThis is the standard (Julia) mode of the REPL, but there are three other modes you need to know. Each mode is entered by typing a specific character after the julia&gt; prompt. Once you’re in a non-Julia mode, you stay there for every command you run. To exit it, hit backspace after the prompt and you’ll get the julia&gt; prompt back.\n\nHelp mode (?)\nBy pressing ? you can obtain information and metadata about Julia objects (functions, types, etc.) or unicode symbols. The query fetches the docstring of the object, which explains how to use it.\nhelp?&gt; println\nIf you don’t know the exact name you are looking for, type a word surrounded by quotes to see in which docstrings it pops up.\n\n\nPackage mode (])\nBy pressing ] you access Pkg.jl, Julia’s integrated package manager, whose documentation is an absolute must-read. Pkg.jl allows you to:\n\n]activate different local, shared or temporary environments;\n]instantiate them by downloading the necessary packages;\n]add, ]update (or ]up) and ]remove (or ]rm) packages;\nget the ]status (or ]st) of your current environment.\n\nAs an illustration, this would download the package Revise.jl (see below) inside our default environment:\n(@v1.XX) pkg&gt; add Revise\nNote that the same keywords are also available in Julia mode (and that way we can actually run them for this website, which doesn’t emulate other modes of the REPL):\n\nusing Pkg\nPkg.add(\"Revise\")\n\n\n   Resolving package versions...\n     Project No packages added to or removed from `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Project.toml`\n    Manifest No packages added to or removed from `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Manifest.toml`\n\n\n\n\n\nPkg.status()\n\n\nStatus `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Project.toml`\n  [5903a43b] Infiltrator v1.9.11\n  [295af30f] Revise v3.15.0\n  [b77e0a4c] InteractiveUtils v1.11.0\n\n\n\n\nThe package mode itself also has a help mode, accessed with ?, in case you’re lost among all these new keywords.\n\n\nShell mode (;)\nBy pressing ; you enter a terminal, where you can execute any command you want. Here’s an example for Unix systems:\nshell&gt; ls ."
   },
   {
     "objectID": "pages/writing/index.html#editor",
     "href": "pages/writing/index.html#editor",
     "title": "Writing",
     "section": "Editor",
-    "text": "Editor\n\nVisual Studio Code\nJulia VSCode extension\ndocumentation\nkeyboard shortcuts\nVSCodium\nEmacs\nVim\nJuliaEditorSupport\nJuliaMono"
+    "text": "Editor\nMost computer programs are just plain text files with a specific extension (in our case .jl). So in theory, any text editor suffices to write and modify Julia code. In practice, an Integrated Development Environment (or IDE) makes the experience much more pleasant, thanks to code-related utilities and language-specific plugins.\nThe best IDE for Julia is Visual Studio Code, or VSCode, developed by Microsoft from an open-source foundation. Indeed, the Julia VSCode extension is the most feature-rich of all Julia IDE plugins. You can download it from the VSCode Marketplace and read its documentation. In what follows, we will sometimes mention commands and keyboard shortcuts provided by this extension. But the only shortcut you need to remember is Ctrl + Shift + P (or Cmd + Shift + P on Mac): this opens the VSCode command palette, in which you can search for any command. Type “julia” in the command palette to see what you can do.\nA more modern language server called JETLS.jl is currently under development, along with its VSCode extension jetls-client. Feel free to try it but expect rougher edges.\n\n\nAdvanced\n\nAssuming you want to avoid the Microsoft ecosystem, VSCodium is a nearly bit-for-bit replacement for VSCode, but with an open source license and without telemetry. If you don’t want to use VSCode at all, other options include Emacs and Vim. Check out JuliaEditorSupport to see if your favorite IDE has a Julia plugin. The available functionalities should be roughly similar to those of VSCode, at least for the basic aspects like running code.\nYou may also want to download the JuliaMono font for esthetically pleasant unicode handling."
   },
   {
     "objectID": "pages/writing/index.html#running-code",
     "href": "pages/writing/index.html#running-code",
     "title": "Writing",
     "section": "Running code",
-    "text": "Running code\n\nRevise.jl"
-  },
-  {
-    "objectID": "pages/writing/index.html#notebooks",
-    "href": "pages/writing/index.html#notebooks",
-    "title": "Writing",
-    "section": "Notebooks",
-    "text": "Notebooks\n\nJupyter\nIJulia.jl\nPluto.jl\nCodeCells.jl"
+    "text": "Running code\nYou can execute a Julia script from your terminal, but in most cases that is not what you want to do.\njulia myfile.jl  # avoid this\nJulia has a rather high startup and compilation latency. If you only use scripts, you will pay this cost every time you run a slightly modified version of your code. That is why many Julia developers fire up a REPL at the beginning of the day and run all of their code there, chunk by chunk, in an interactive way. Full files can be run interactively from the REPL with the include function.\ninclude(\"myfile.jl\")\nAlternatively, includet from the Revise.jl package can be used to “include and track” a file. This will automatically update changes to function definitions in the file in the running REPL session.\nExecuting lines of code in VSCode is made much easier by the following commands:\n\nJulia: Restart REPL (shortcut Alt + J then Alt + R) - this will open or restart the integrated Julia REPL. It is different from opening a plain VSCode terminal and launching Julia manually from there.\nJulia: Execute Code in REPL and Move (shortcut Shift + Enter) - this will execute the selected code in the integrated Julia REPL, like a notebook.\n\nWhen keeping the same REPL open for a long time, it’s common to end up with a “polluted” workspace where the definitions of certain variables or functions have been overwritten in unexpected ways. This, along with other events like struct redefinitions, might force you to restart your REPL now and again, and that’s okay.\n\nNotebooks\nNotebooks are a popular alternative to IDEs when it comes to short and self-contained code, typically in data science. They are also a good fit for literate programming, where lines of code are interspersed with comments and explanations.\nThe most well-known notebook ecosystem is Jupyter, which supports Julia, Python and R as its three core languages. To use it with Julia, you will need to install the IJulia.jl backend. Then, if you have also installed Jupyter with pip install jupyterlab, you can run this command to launch the server:\njupyter lab\nIf you only have IJulia.jl on your system, you can run this snippet instead:\nimport IJulia; IJulia.notebook()\nJupyter notebooks can be opened, modified and run directly from the VSCode editor. Thanks to the Julia extension, you don’t even need to install IJulia.jl or Jupyter first.\nA pure-Julia alternative to Jupyter is given by Pluto.jl. Unlike Jupyter notebooks, Pluto notebooks are\n\nReactive: when you update a cell, the other cells depending on it are updated.\nReproducible: they come bundled with an exhaustive list of dependencies that are installed automatically.\n\nTo try them out, install the package and then run\nimport Pluto; Pluto.run()\n\n\nAdvanced\n\nFor enhanced notebook-style development outside of the traditional notebook interfaces, CodeCells.jl provides code cell functionality that can be integrated into other development workflows, bridging the gap between notebook-style development and traditional script editing."
   },
   {
     "objectID": "pages/writing/index.html#markdown",
     "href": "pages/writing/index.html#markdown",
     "title": "Writing",
     "section": "Markdown",
-    "text": "Markdown\n\nMarkdown\n\n\nQuarto\n\nQuarto\nextension\ndocumentation"
+    "text": "Markdown\nMarkdown is a markup language used to add formatting elements to plain text text files.\nStandard Markdown files, which have the .md extension, are not used for interactive programming, meaning one cannot run code written in the file.\nThis is an example of a standard markdown file:\n# Title\n\n## Section Header\n\nThis is example text.\n\n```julia\nprintln(\"hello world\")\n```\n\nQuarto\nQuarto is an open-source scientific and technical publishing system. Quarto provides a Markdown variant with the .qmd extension. Quarto markdown files, like standard Markdown files, also integrate with editors such as VSCode. Install the Quarto extension for a streamlined experience.\nUnlike standard markdown files however , Quarto markdown files have executable code chunks, which makes them an alternative to notebooks. Additionally, Quarto markdown files give users control over output and styling via the YAML header at the top of the .qmd file.\nBelow is an example of a Quarto markdown file.\n---\ntitle: \"My document\"\nformat:\n  # renders a HTML document\n  html:\n    # table of contents\n    toc: true\nexecute:\n  # makes code chunks invisible in the output\n  # code output is still visible though\n  echo: false\n  # hides warnings in the output\n  warning: false\n# native julia engine\nengine: julia\n---\n\n# Title\n\n## Section Header\n\nBelow is an executable code chunk.\n\nIf this file were opened in an editor\nsuch as VSCode, one could execute the\n`println(\"hello world\")` Julia code and\nview the output, like in a notebook.\n\n```{julia}\nprintln(\"hello world\")\n```"
   },
   {
     "objectID": "pages/writing/index.html#environments",
     "href": "pages/writing/index.html#environments",
     "title": "Writing",
     "section": "Environments",
-    "text": "Environments\n\ninstall packages\nmanage environments\nenvironment stacking\nenvironment\nPkgDependency.jl"
+    "text": "Environments\nAs we have seen, Pkg.jl is the Julia equivalent of pip or uv for Python. It lets you install packages and manage environments (collections of packages with specific versions).\nYou can activate an environment from the Pkg REPL by specifying its path ]activate somepath. You create new environments simply by activating a path that does not contain an environment. The necessary files are created automatically once you ]add packages. Typically, you would do ]activate . to activate the environment in the current directory. Another option is to directly start Julia inside an environment, with the command line option julia --project=somepath.\nOnce in an environment, the packages you ]add will be listed in two files somepath/Project.toml and somepath/Manifest.toml:\n\nProject.toml contains general project information (name of the package, unique id, authors) and direct dependencies with version bounds.\nManifest.toml contains the exact versions of all direct and indirect dependencies\n\nIf you haven’t activated any local project, packages will be installed in the default environment, called @v1.XX after the active version of Julia (note the @ before the name). Packages installed that way are available no matter which local environment is active, because of “environment stacking”. It is recommended to keep the default environment very light to avoid dependency conflicts: put only essential development tools in there. Then, for each of your projects, create a separate local environment to contain the dependencies specific to that project.\nYou can configure the environment in which a VSCode Julia REPL opens. Just click the Julia env: ... button at the bottom. Note however that the Julia version itself will always be the default one from juliaup.\n\n\nAdvanced\n\nYou can visualize the dependency graph of an environment with PkgDependency.jl."
   },
   {
     "objectID": "pages/writing/index.html#local-packages",
     "href": "pages/writing/index.html#local-packages",
     "title": "Writing",
     "section": "Local packages",
-    "text": "Local packages\n\ncreate a package\nmodule"
+    "text": "Local packages\nOnce your code base grows beyond a few scripts, you will want to create a package of your own. The first advantage is that you don’t need to specify the path of every file: using MyPackage: myfunc is enough to get access to the names you define. Furthermore, you can specify versions for your package and its dependencies, making your code easier and safer to reuse.\nTo create a new package locally, one easy way is to use ]generate. We will discuss more sophisticated workflows, including a graphical tool, in the next blog post.\n(@v1.XX) pkg&gt; generate MyPackage\nThis command initializes a simple folder with a Project.toml and a src subfolder. As we have seen, the Project.toml specifies the dependencies. Meanwhile, the src subfolder contains a file MyPackage.jl, where a module called MyPackage is defined. It is the heart of your package, and will typically look like this once you’re done:\nmodule MyPackage\n\n# imported dependencies\nusing OtherPackage1\nusing OtherPackage2\n\n# files defining functions, types, etc.\ninclude(\"file1.jl\")\ninclude(\"subfolder/file2.jl\")\n\n# names you want to make public\nexport myfunc\nexport MyType\n\nend"
   },
   {
     "objectID": "pages/writing/index.html#development-workflow",
     "href": "pages/writing/index.html#development-workflow",
     "title": "Writing",
     "section": "Development workflow",
-    "text": "Development workflow\n\nRevise.jl\ndocumentation\nshared\nstacked\nShareAdd.jl"
+    "text": "Development workflow\nOnce you have created a package, your daily routine will look like this:\n\nOpen a REPL in which you import MyPackage\nRun some functions interactively, either by writing them directly in the REPL or from a Julia file that you use as a notebook\nModify some files in MyPackage\nGo back to step 2\n\nFor that to work well, you need code modifications to be taken into account automatically. That is why Revise.jl exists. In fact, it is used by so many Julia developers that some wish it were part of the core language: you can read its documentation for more details. If you start every REPL session by importing Revise.jl, then all the other packages you import after that will have their code tracked. Whenever you edit a source file and hit save, the REPL will update its state accordingly. The Julia extension imports Revise.jl by default when it starts a REPL, provided it is installed in the default environment.\nThe only remaining question is: in which environment should you work? In general, you can work within the environment defined by your package, and add all the dependencies you need there. To summarize, this is how you get started:\nusing Revise, Pkg\nPkg.activate(\"./MyPackage\")\nusing MyPackage\nMyPackage.myfunc()\n\n\nAdvanced\n\nThere are situations where the previous method does not work:\n\nif you are developing several packages at once and want to use them together\nif your interactive work requires heavy dependencies that your package itself does not need (for instance plotting).\n\nThen, you will need to use another environment as a playground, and ]develop (or ]dev) your package(s) into it. Note the new Pkg.jl keyword: ]add PackageName is used to download a fixed version of a registered package, while ]develop path links to the current state of the code in a local folder. To summarize, this is how you get started:\nusing Revise, Pkg\nPkg.activate(\"./MyPlayground\")\nPkg.develop(path=\"./MyPackage\")\nusing MyPackage\nMyPackage.myfunc()\nFor the common case of dependencies needed for interactive work only, shared or stacked environments are another practical solution. ShareAdd.jl can help you in using and managing these (see its documentation)."
   },
   {
     "objectID": "pages/writing/index.html#configuration",
     "href": "pages/writing/index.html#configuration",
     "title": "Writing",
     "section": "Configuration",
-    "text": "Configuration\n\nstartup flags\nstartup file\nOhMyREPL.jl\nStartupCustomizer.jl\nAbbreviatedStackTraces.jl\ninteractions with VSCode\nTerm.jl\nadvanced configuration"
+    "text": "Configuration\nJulia accepts startup flags to handle settings such as the number of threads available or the environment in which it launches. Most Julia developers also have a startup file which is run automatically every time the language is started. It is located at .julia/config/startup.jl.\nThe basic component that everyone puts in the startup file is Revise.jl:\ntry\n    using Revise\ncatch e\n    @warn \"Error initializing Revise\"\nend\nIn addition, users commonly import packages that affect the REPL experience, as well as esthetic, benchmarking or profiling utilities. A typical example is OhMyREPL.jl which is widely used for syntax highlighting in the REPL. More generally, the startup file allows you to define your own favorite helper functions and have them immediately available in every Julia session. StartupCustomizer.jl can help you set up your startup file.\n\n\nAdvanced\n\nHere are a few more startup packages that can make your life easier once you know the language better:\n\nAbbreviatedStackTraces.jl allows you to shorten error stacktraces, which can sometimes get pretty long (beware of its interactions with VSCode)\nTerm.jl offers a completely new way to display things like types and errors (see the advanced configuration to enable it by default)."
   },
   {
     "objectID": "pages/writing/index.html#interactivity",
     "href": "pages/writing/index.html#interactivity",
     "title": "Writing",
     "section": "Interactivity",
-    "text": "Interactivity\n\nInteractiveUtils.jl\nAbout.jl\nInteractiveCodeSearch.jl\nInteractiveErrors.jl\nCodeTracking.jl"
+    "text": "Interactivity\nThe Julia REPL comes bundled with InteractiveUtils.jl, a bunch of very useful functions for interacting with source code.\nHere are a few examples:\n\nsupertypes(Int64)\n\n(Int64, Signed, Integer, Real, Number, Any)\n\n\n\nsubtypes(Integer)\n\n3-element Vector{Any}:\n Bool\n Signed\n Unsigned\n\n\n\nlength(methodswith(Integer))\n\n668\n\n\n\n@which exp(1)\n\nexp(x::Real) in Base.Math at math.jl:1543\n\n\n\napropos(\"matrix exponential\")\n\nBase.:^\nBase.exp\n\n\nWhen you ask for help on a Julia forum, you might want to include your local Julia information:\n\nversioninfo()\n\nJulia Version 1.12.6\nCommit 15346901f00 (2026-04-09 19:20 UTC)\nBuild Info:\n  Official https://julialang.org release\nPlatform Info:\n  OS: Linux (x86_64-linux-gnu)\n  CPU: 4 × AMD EPYC 7763 64-Core Processor\n  WORD_SIZE: 64\n  LLVM: libLLVM-18.1.7 (ORCJIT, znver3)\n  GC: Built with stock GC\nThreads: 1 default, 1 interactive, 1 GC (on 4 virtual cores)\nEnvironment:\n  JULIA_PROJECT = @.\n  JULIA_LOAD_PATH = @:@stdlib\n\n\n\n\nAdvanced\n\nThe following packages can give you even more interactive power:\n\nAbout.jl to look for detailed information about a function, type, value, or something else entirely.\nInteractiveCodeSearch.jl to look for a precise implementation of a function.\nInteractiveErrors.jl to navigate through stacktraces.\nCodeTracking.jl to extend InteractiveUtils.jl"
   },
   {
     "objectID": "pages/writing/index.html#logging",
     "href": "pages/writing/index.html#logging",
     "title": "Writing",
     "section": "Logging",
-    "text": "Logging\n\ndocumentation\nProgressLogging.jl\nSuppressor.jl"
+    "text": "Logging\nWhen you encounter a problem in your code or want to track progress, a common reflex is to add print statements everywhere.\n\nfunction printing_func(n)\n    for i in 1:n\n        println(i^2)\n    end\nend\n\nprinting_func (generic function with 1 method)\n\n\n\nprinting_func(3)\n\n1\n4\n9\n\n\nA slight improvement is given by the @show macro, which displays the variable name:\n\nfunction showing_func(n)\n    for i in 1:n\n        @show i^2\n    end\nend\n\nshowing_func (generic function with 1 method)\n\n\n\nshowing_func(3)\n\ni ^ 2 = 1\ni ^ 2 = 4\ni ^ 2 = 9\n\n\nBut you can go even further with the macros @debug, @info, @warn and @error. They have several advantages over printing:\n\nThey display variable names and a custom message\nThey show the line number they were called from\nThey can be disabled and filtered according to source module and severity level\nThey work well in multithreaded code\nThey can write their output to a file\n\n\nfunction warning_func(n)\n    for i in 1:n\n        @warn \"This is bad\" i^2\n    end\nend\n\nwarning_func (generic function with 1 method)\n\n\n\nwarning_func(3)\n\n\n┌ Warning: This is bad\n│   i ^ 2 = 1\n└ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537\n┌ Warning: This is bad\n│   i ^ 2 = 4\n└ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537\n┌ Warning: This is bad\n│   i ^ 2 = 9\n└ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537\n\n\n\n\nRefer to the logging documentation for more information.\nBeyond the built-in logging utilities, ProgressLogging.jl has a macro @progress, which interfaces nicely with VSCode and Pluto to display progress bars. And Suppressor.jl can sometimes be handy when you need to suppress warnings or other bothersome messages (use at your own risk).\n\n\nAdvanced\n\nNote that @debug messages are suppressed by default. You can enable them through the JULIA_DEBUG environment variable if you specify the source module name, typically Main or your package module."
   },
   {
     "objectID": "pages/writing/index.html#debugging",
     "href": "pages/writing/index.html#debugging",
     "title": "Writing",
     "section": "Debugging",
-    "text": "Debugging\n\nSetting\n\nFermat number\n\n\n\nInfiltrator.jl\n\nInfiltrator.jl\ninteger overflow\n\n\n\nDebugger.jl\n\nDebugger.jl\ncustom navigation commands\ngraphical interface for debugging"
+    "text": "Debugging\nThe problem with printing or logging is that you cannot interact with local variables or save them for further analysis. The following two packages solve this issue, and they probably belong in your default environment @v1.XX, like Revise.jl.\n\nSetting\nAssume you want to debug a function checking whether the \\(n\\)-th Fermat number \\(F_n = 2^{2^n} + 1\\) is prime:\n\nusing Infiltrator\n\nfunction fermat_prime(n)\n    k = 2^n\n    F = 2^k + 1\n    for d in 2:isqrt(F)  # integer square root\n        if F % d == 0\n            return false\n        end\n    end\n    return true\nend\n\nfermat_prime (generic function with 1 method)\n\n\n\nfermat_prime(4)\n\ntrue\n\n\n\nfermat_prime(6)\n\ntrue\n\n\nUnfortunately, \\(F_4 = 65537\\) is the largest known Fermat prime, which means \\(F_6\\) is incorrectly classified. Let’s investigate why this happens!\n\n\nInfiltrator.jl\nInfiltrator.jl is a lightweight inspection package, which will not slow down your code at all. Its @infiltrate macro allows you to directly set breakpoints in your code. Calling a function which hits a breakpoint will activate the Infiltrator REPL-mode and change the prompt to infil&gt;. Typing ? in this mode will summarize available commands. For example, typing @locals in Infiltrator-mode will print local variables:\n\nusing Infiltrator\n\nfunction fermat_prime_infil(n)\n    k = 2^n\n    F = 2^k + 1\n    @infiltrate\n    for d in 2:isqrt(F)\n        if F % d == 0\n            return false\n        end\n    end\n    return true\nend\n\nfermat_prime_infil (generic function with 1 method)\n\n\nWhat makes Infiltrator.jl even more powerful is the @exfiltrate macro, which allows you to move local variables into a global storage called the safehouse.\njulia&gt; fermat_prime_infil(6)\nInfiltrating fermat_prime_infil(n::Int64)\n  at REPL[2]:4\n\ninfil&gt; @exfiltrate k F\nExfiltrating 2 local variables into the safehouse.\n\ninfil&gt; @continue\n\ntrue\n\njulia&gt; safehouse.k\n64\n\njulia&gt; safehouse.F\n1\nThe diagnosis is a classic one: integer overflow. Indeed, \\(2^{64}\\) is larger than the maximum integer value in Julia:\n\ntypemax(Int)\n2^63-1\n\n9223372036854775807\n\n\nAnd the solution is to call our function on “big” integers with an arbitrary number of bits:\n\nfermat_prime(big(6))\n\nfalse\n\n\n\n\nDebugger.jl\nDebugger.jl allows us to interrupt code execution anywhere we want, even in functions we did not write. Using its @enter macro, we can enter a function call and walk through the call stack, at the cost of reduced performance.\nThe REPL prompt changes to 1|debug&gt;, allowing you to use custom navigation commands to step into and out of function calls, show local variables and set breakpoints. Typing a backtick ` will change the prompt to 1|julia&gt;, indicating evaluation mode. Any expression typed in this mode will be evaluated in the local context. This is useful to show local variables, as demonstrated in the following example:\njulia&gt; using Debugger\n\njulia&gt; @enter fermat_prime(6)\nIn fermat_prime(n) at REPL[7]:1\n 1  function fermat_prime(n)\n&gt;2      k = 2^n\n 3      F = 2^k + 1\n 4      for d in 2:isqrt(F)  # integer square root\n 5          if F % d == 0\n 6              return false\n\nAbout to run: (^)(2, 6)\n1|debug&gt; n\nIn fermat_prime(n) at REPL[7]:1\n 1  function fermat_prime(n)\n 2      k = 2^n\n&gt;3      F = 2^k + 1\n 4      for d in 2:isqrt(F)  # integer square root\n 5          if F % d == 0\n 6              return false\n 7          end\n\nAbout to run: (^)(2, 64)\n1|julia&gt; k\n64\nVSCode offers a nice graphical interface for debugging. Click left of a line number in an editor pane to add a breakpoint, which is represented by a red circle. In the debugging pane of the Julia extension, click Run and Debug to start the debugger. The program will automatically halt when it hits a breakpoint. Using the toolbar at the top of the editor, you can then continue, step over, step into and step out of your code. The debugger will open a pane showing information about the code such as local variables inside of the current function, their current values and the full call stack.\n\n\nAdvanced\n\nThe debugger can be sped up by selectively compiling modules that you will not need to step into via the + symbol at the bottom of the debugging pane. It is often easiest to start by adding ALL_MODULES_EXCEPT_MAIN to the compiled list, and then selectively remove the modules you need to have interpreted by typing their name into the same + menu but with a - sign in front e.g. -MyModule."
+  },
+  {
+    "objectID": "pages/further/index.html",
+    "href": "pages/further/index.html",
+    "title": "Going further",
+    "section": "",
+    "text": "Documentation\nLearning\nBlog\nCommunity\nContribute\nJuliaCon"
+  },
+  {
+    "objectID": "pages/further/index.html#official",
+    "href": "pages/further/index.html#official",
+    "title": "Going further",
+    "section": "",
+    "text": "Documentation\nLearning\nBlog\nCommunity\nContribute\nJuliaCon"
+  },
+  {
+    "objectID": "pages/further/index.html#tutorials",
+    "href": "pages/further/index.html#tutorials",
+    "title": "Going further",
+    "section": "Tutorials",
+    "text": "Tutorials\n\nAdvanced Scientific Computing by Tim Holy\nGood Scientific Code Workshop by JuliaDynamics\nIntroduction to Julia Tutorial Workshop by Jose Storopoli\nIntroduction to Julia Course by CSC Training\nJulia for Economists by Cameron Pfiffer\nJulia for High-Performance Computing by Carsten Bauer\nJulia programming for ML by Adrian Hill\nJuliaNotes.jl by the Martínez Molecular Modeling Group\nLearn X in Y Minutes Where X=Julia by Leah Hanson et al."
+  },
+  {
+    "objectID": "pages/further/index.html#blogs",
+    "href": "pages/further/index.html#blogs",
+    "title": "Going further",
+    "section": "Blogs",
+    "text": "Blogs\n\nJakob Nybo Nissen\nOle Kröger\nMiguel Raz Guzmán Macedo\nChris Rackauckas\nBogumił Kamiński\nKatharine Hyatt\nFrames Catherine White\nInvenia"
+  },
+  {
+    "objectID": "pages/further/index.html#videos",
+    "href": "pages/further/index.html#videos",
+    "title": "Going further",
+    "section": "Videos",
+    "text": "Videos\n\nThe Unreasonable Effectiveness of Multiple Dispatch by Stefan Karpinski at JuliaCon 2019"
+  },
+  {
+    "objectID": "pages/further/index.html#lore",
+    "href": "pages/further/index.html#lore",
+    "title": "Going further",
+    "section": "Lore",
+    "text": "Lore\n\nWhy we created Julia (2012)\nPaper in SIAM Review: Julia - A Fresh Approach to Numerical Computing (2017)\nAnnouncing the release of Julia 1.0 (2018)\nThe Julia Project and Its Entities (2019)\nJulia’s Release Process (2019)\nCode, docs, and tests: what’s in the General registry? (2021)\nWhy We Use Julia, 10 Years Later (2022)"
   },
   {
     "objectID": "pages/sharing/index.html",
@@ -252,45 +252,66 @@
     "text": "Collaboration\n\nSciML ColPrac\ncontribute"
   },
   {
-    "objectID": "pages/further/index.html",
-    "href": "pages/further/index.html",
-    "title": "Going further",
+    "objectID": "pages/optimizing/index.html",
+    "href": "pages/optimizing/index.html",
+    "title": "Optimizing",
     "section": "",
-    "text": "Documentation\nLearning\nBlog\nCommunity\nContribute\nJuliaCon"
+    "text": "machine code\nuntyped global variables\nofficial performance tips"
   },
   {
-    "objectID": "pages/further/index.html#official",
-    "href": "pages/further/index.html#official",
-    "title": "Going further",
+    "objectID": "pages/optimizing/index.html#principles",
+    "href": "pages/optimizing/index.html#principles",
+    "title": "Optimizing",
     "section": "",
-    "text": "Documentation\nLearning\nBlog\nCommunity\nContribute\nJuliaCon"
+    "text": "machine code\nuntyped global variables\nofficial performance tips"
   },
   {
-    "objectID": "pages/further/index.html#tutorials",
-    "href": "pages/further/index.html#tutorials",
-    "title": "Going further",
-    "section": "Tutorials",
-    "text": "Tutorials\n\nAdvanced Scientific Computing by Tim Holy\nGood Scientific Code Workshop by JuliaDynamics\nIntroduction to Julia Tutorial Workshop by Jose Storopoli\nIntroduction to Julia Course by CSC Training\nJulia for Economists by Cameron Pfiffer\nJulia for High-Performance Computing by Carsten Bauer\nJulia programming for ML by Adrian Hill\nJuliaNotes.jl by the Martínez Molecular Modeling Group\nLearn X in Y Minutes Where X=Julia by Leah Hanson et al."
+    "objectID": "pages/optimizing/index.html#measurements",
+    "href": "pages/optimizing/index.html#measurements",
+    "title": "Optimizing",
+    "section": "Measurements",
+    "text": "Measurements\n\ngarbage collector\n\n\nBenchmarkTools\n\nBenchmarkTools.jl\ninterpolate external values\nsetup phase\n\n\n\nChairmarks\n\nChairmarks.jl\nChairmarks documentation\nPrettyChairmarks.jl\n\n\n\nBenchmark suites\n\nPkgBenchmark.jl\nBenchmarkCI.jl\nAirSpeedVelocity.jl\nPkgJogger.jl\nJulia-TTFX-Snippets\n\n\n\nOther tools\n\nTimerOutputs.jl\nhyperfine\nProgressMeter.jl\nProgressLogging.jl"
   },
   {
-    "objectID": "pages/further/index.html#blogs",
-    "href": "pages/further/index.html#blogs",
-    "title": "Going further",
-    "section": "Blogs",
-    "text": "Blogs\n\nJakob Nybo Nissen\nOle Kröger\nMiguel Raz Guzmán Macedo\nChris Rackauckas\nBogumił Kamiński\nKatharine Hyatt\nFrames Catherine White\nInvenia"
+    "objectID": "pages/optimizing/index.html#profiling",
+    "href": "pages/optimizing/index.html#profiling",
+    "title": "Optimizing",
+    "section": "Profiling",
+    "text": "Profiling\n\nSampling\n\none for runtime\none for memory\n\n\n\nVisualization tools\n\nProfileView.jl\nPProf.jl\npprof\nProfileSVG.jl\nProfileCanvas.jl\nStatProfilerHTML.jl\n\n\n\nExternal profilers\n\nIntel VTune\nIntelITT.jl\nNVIDIA Nsight Systems\nNVTX.jl\nTracy"
   },
   {
-    "objectID": "pages/further/index.html#videos",
-    "href": "pages/further/index.html#videos",
-    "title": "Going further",
-    "section": "Videos",
-    "text": "Videos\n\nThe Unreasonable Effectiveness of Multiple Dispatch by Stefan Karpinski at JuliaCon 2019"
+    "objectID": "pages/optimizing/index.html#type-stability",
+    "href": "pages/optimizing/index.html#type-stability",
+    "title": "Optimizing",
+    "section": "Type stability",
+    "text": "Type stability\n\nJET.jl\nparametric types\n@code_warntype\noptimization analysis\ntest integrations\nstatic linter\nCthulhu.jl\nvideo example\nimprove type inference\nDispatchDoctor.jl"
   },
   {
-    "objectID": "pages/further/index.html#lore",
-    "href": "pages/further/index.html#lore",
-    "title": "Going further",
-    "section": "Lore",
-    "text": "Lore\n\nWhy we created Julia (2012)\nPaper in SIAM Review: Julia - A Fresh Approach to Numerical Computing (2017)\nAnnouncing the release of Julia 1.0 (2018)\nThe Julia Project and Its Entities (2019)\nJulia’s Release Process (2019)\nCode, docs, and tests: what’s in the General registry? (2021)\nWhy We Use Julia, 10 Years Later (2022)"
+    "objectID": "pages/optimizing/index.html#memory-management",
+    "href": "pages/optimizing/index.html#memory-management",
+    "title": "Optimizing",
+    "section": "Memory management",
+    "text": "Memory management\n\narrays and allocations\nAllocCheck.jl"
+  },
+  {
+    "objectID": "pages/optimizing/index.html#compilation",
+    "href": "pages/optimizing/index.html#compilation",
+    "title": "Optimizing",
+    "section": "Compilation",
+    "text": "Compilation\n\nPrecompilation\n\nPrecompileTools.jl\ndocumentation\nSnoopCompile.jl\nPrecompileSignatures.jl\nPrecompileAfterUpdate.jl\n\n\n\nPackage compilation\n\nPackageCompiler.jl\nstreamlined with VSCode\n\n\n\nStatic compilation\n\napps\nlibraries\nArgParse.jl\nrelocability\nStaticCompiler.jl\nStaticTools.jl\nStaticArrays.jl\ndetailed guide\nJuliaC.jl\nBumper.jl"
+  },
+  {
+    "objectID": "pages/optimizing/index.html#parallelism",
+    "href": "pages/optimizing/index.html#parallelism",
+    "title": "Optimizing",
+    "section": "Parallelism",
+    "text": "Parallelism\n\nmultithreading\nmultiprocessing / distributed computing\n\n\nMultithreading\n\nBLAS\nLAPACK\nmultithreading and linear algebra\nOhMyThreads.jl\ntranslation guide\nPolyester.jl\nThreadPinning.jl\nLoopVectorization.jl\nOctavian.jl\nThreadsX.jl\n\n\n\nDistributed computing\n\nTransducers.jl\nFolds.jl\nMPI.jl\nMessage Passing Interface standard\nElemental.jl\nElemental\n\n\n\nGPU programming\n\nJuliaGPU\nCUDA.jl\nKernelAbstractions.jl\n\n\n\nSIMD instructions\n\nPerformance annotations\nSIMD.jl\nblog post"
+  },
+  {
+    "objectID": "pages/optimizing/index.html#efficient-types",
+    "href": "pages/optimizing/index.html#efficient-types",
+    "title": "Optimizing",
+    "section": "Efficient types",
+    "text": "Efficient types\n\nStatic arrays\n\nStaticArrays.jl\nAccessors.jl\n\n\n\nClassic data structures\n\nJuliaCollections\nDataStructures.jl\nIterTools.jl\nMemoize.jl"
   }
 ]
