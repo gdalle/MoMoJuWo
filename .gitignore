@@ -4,3 +4,6 @@ _site/
 
 **/Manifest.toml
 .cache/
+.CondaPkg
+MyAwesomePackage.jl
+*.json

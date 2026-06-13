@@ -5,16 +5,69 @@ execute:
   cache: true
 ---
 
+In this post, you will learn about tools to initialize, structure and distribute Julia packages.
+
 ## Setup
 
-- [GitHub](https://github.com/)
-- [GitLab](https://gitlab.com/)
-- [Git](https://git-scm.com/)
-- [GitHub documentation](https://docs.github.com/en/get-started/quickstart)
-- [creating](https://github.com/new)
-- [package naming rules](https://pkgdocs.julialang.org/v1/creating-packages/#Package-naming-rules)
-- [PkgTemplates.jl](https://github.com/JuliaCI/PkgTemplates.jl)
-- [PackageMaker.jl](https://github.com/Eben60/PackageMaker.jl)
+A vast majority of Julia packages are hosted on [GitHub](https://github.com/) (although less common, other options like [GitLab](https://gitlab.com/) are also possible).
+GitHub is a platform for collaborative software development, based on the version control system called [Git](https://git-scm.com/).
+If you are unfamiliar with these technologies, check out the [GitHub documentation](https://docs.github.com/en/get-started/quickstart).
+
+The first step is therefore [creating](https://github.com/new) an empty GitHub repository.
+You should try to follow [package naming rules](https://pkgdocs.julialang.org/v1/creating-packages/#Package-naming-rules) and add a ".jl" extension at the end, like so: "MyAwesomePackage.jl".
+Do not insert any files like `README.md`, `.gitignore` or `LICENSE.md`, this will be done for you in the next step.
+
+Indeed, you can leverage [BestieTemplate.jl](https://github.com/JuliaBesties/BestieTemplate.jl) to automate package creation (like `]generate` from Pkg.jl but on steroids).
+The same package also lets you update an existing package to follow evolving best practices by adding or modifying the necessary files.
+
+To get started, `BestieTemplate.generate` asks you a few questions and interactively fills your package:
+
+```julia
+import BestieTemplate; BestieTemplate.generate("MyAwesomePackage")
+```
+
+Since we want to render the demonstration on this website, we pick the non-interactive route instead:
+
+```{julia}
+using BestieTemplate: new_pkg_quick
+
+rm("MyAwesomePackage.jl", recursive=true)
+destination = "MyAwesomePackage.jl"
+owner = "myuser"
+authors = "User Name"
+strategy = :light  # a reasonable default preset
+new_pkg_quick(destination, owner, authors, strategy)
+```
+
+However you obtain it, simply push this new folder to the remote repository <https://github.com/myuser/MyAwesomePackage.jl> (as BestieTemplate.jl instructs you to do), and you're ready to go.
+The rest of this post will explain to you what each part of this big scary folder does, and how to bend them to your will.
+
+```{julia}
+readdir("MyAwesomePackage.jl")
+```
+
+To work on the package further, we switch to its environment or "develop" it into the current one, and then import it:
+
+```{julia}
+import Pkg
+Pkg.activate("MyAwesomePackage.jl")  # or Pkg.develop
+Pkg.status()
+```
+
+followed by
+
+```{julia}
+using MyAwesomePackage
+```
+
+<details>
+<summary>Advanced</summary>
+
+An older alternative to BestieTemplate.jl is [PkgTemplates.jl](https://github.com/JuliaCI/PkgTemplates.jl).
+It is less feature-rich and does not allow updates of an existing project, so we no longer recommend it.
+Still, if you want to try it out, there is a graphical wrapper called [PackageMaker.jl](https://github.com/Eben60/PackageMaker.jl).
+
+</details>
 
 ## GitHub Actions
 
