@@ -199,32 +199,170 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>In this post, you will learn about tools to initialize, structure and distribute Julia packages.</p>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<ul>
-<li><a href="https://github.com/">GitHub</a></li>
-<li><a href="https://gitlab.com/">GitLab</a></li>
-<li><a href="https://git-scm.com/">Git</a></li>
-<li><a href="https://docs.github.com/en/get-started/quickstart">GitHub documentation</a></li>
-<li><a href="https://github.com/new">creating</a></li>
-<li><a href="https://pkgdocs.julialang.org/v1/creating-packages/#Package-naming-rules">package naming rules</a></li>
-<li><a href="https://github.com/JuliaCI/PkgTemplates.jl">PkgTemplates.jl</a></li>
-<li><a href="https://github.com/Eben60/PackageMaker.jl">PackageMaker.jl</a></li>
-</ul>
+<p>A vast majority of Julia packages are hosted on <a href="https://github.com/">GitHub</a> (although less common, other options like <a href="https://gitlab.com/">GitLab</a> are also possible). GitHub is a platform for collaborative software development, based on the version control system called <a href="https://git-scm.com/">Git</a>. If you are unfamiliar with these technologies, check out the <a href="https://docs.github.com/en/get-started/quickstart">GitHub documentation</a>.</p>
+<p>The first step is therefore <a href="https://github.com/new">creating</a> an empty GitHub repository. You should try to follow <a href="https://pkgdocs.julialang.org/v1/creating-packages/#Package-naming-rules">package naming rules</a> and add a “.jl” extension at the end, like so: “MyAwesomePackage.jl”. Do not insert any files like <code>README.md</code>, <code>.gitignore</code> or <code>LICENSE.md</code>, this will be done for you in the next step.</p>
+<p>Indeed, you can leverage <a href="https://github.com/JuliaBesties/BestieTemplate.jl">BestieTemplate.jl</a> to automate package creation (like <code>]generate</code> from Pkg.jl but on steroids). The same package also lets you update an existing package to follow evolving best practices by adding or modifying the necessary files.</p>
+<p>To get started, <code>BestieTemplate.generate</code> asks you a few questions and interactively fills your package:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">BestieTemplate;</span> BestieTemplate.generate("MyAwesomePackage")</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Since we want to render the demonstration on this website, we pick the non-interactive route instead:</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">BestieTemplate</span>: new_pkg_quick</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">isdir</span>(<span class="st">"MyAwesomePackage.jl"</span>) ? <span class="fu">rm</span>(<span class="st">"MyAwesomePackage.jl"</span>, recursive<span class="op">=</span><span class="cn">true</span>) <span class="op">:</span> <span class="cn">nothing</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>destination <span class="op">=</span> <span class="st">"MyAwesomePackage.jl"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>owner <span class="op">=</span> <span class="st">"myuser"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>authors <span class="op">=</span> <span class="st">"User Name"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>strategy <span class="op">=</span> <span class="op">:</span>light  <span class="co"># a reasonable default preset</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">new_pkg_quick</span>(destination, owner, authors, strategy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/.julia/packages/PythonCall/5WGSP/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/.julia/packages/BestieTemplate/6QVd6/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/.julia/packages/CondaPkg/lKlVY/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Initialising pixi
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">/home/runner/.julia/artifacts/4ae17cee0bd922f66b2c72bf2f01c22481a5ec19/bin/pixi</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">init</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">--format pixi</span>
+<span class="ansi-green-fg ansi-bold">             </span>└ <span class="ansi-bright-black-fg">/home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg</span>
+✔ Created /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg/pixi.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Wrote /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg/pixi.toml
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">[dependencies]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">openssl = "&gt;=3, &lt;3.6"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">libstdcxx = "&gt;=3.4,&lt;15.0"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">libstdcxx-ng = "&gt;=3.4,&lt;15.0"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">copier = "*"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ 
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    [dependencies.python]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    channel = "conda-forge"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    build = "*cp*"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    version = "&gt;=3.10,!=3.14.0,!=3.14.1,&lt;4"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ 
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">[workspace]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">name = ".CondaPkg"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">platforms = ["linux-64"]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">channels = ["conda-forge"]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">channel-priority = "strict"</span>
+<span class="ansi-green-fg ansi-bold">             </span>└ <span class="ansi-bright-black-fg">description = "automatically generated by CondaPkg.jl"</span>
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Installing packages
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">/home/runner/.julia/artifacts/4ae17cee0bd922f66b2c72bf2f01c22481a5ec19/bin/pixi</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">install</span>
+<span class="ansi-green-fg ansi-bold">             </span>└ <span class="ansi-bright-black-fg">--manifest-path /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg/pixi.toml</span>
+✔ The default environment has been installed.
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/.julia/packages/PythonCall/5WGSP/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/.julia/packages/BestieTemplate/6QVd6/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Found dependencies: /home/runner/.julia/packages/CondaPkg/lKlVY/CondaPkg.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Initialising pixi
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">/home/runner/.julia/artifacts/4ae17cee0bd922f66b2c72bf2f01c22481a5ec19/bin/pixi</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">init</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">--format pixi</span>
+<span class="ansi-green-fg ansi-bold">             </span>└ <span class="ansi-bright-black-fg">/home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg</span>
+✔ Created /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg/pixi.toml
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Wrote /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg/pixi.toml
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">[dependencies]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">openssl = "&gt;=3, &lt;3.6"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">libstdcxx = "&gt;=3.4,&lt;15.0"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">libstdcxx-ng = "&gt;=3.4,&lt;15.0"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">copier = "*"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ 
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    [dependencies.python]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    channel = "conda-forge"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    build = "*cp*"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">    version = "&gt;=3.10,!=3.14.0,!=3.14.1,&lt;4"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ 
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">[workspace]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">name = ".CondaPkg"</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">platforms = ["linux-64"]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">channels = ["conda-forge"]</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">channel-priority = "strict"</span>
+<span class="ansi-green-fg ansi-bold">             </span>└ <span class="ansi-bright-black-fg">description = "automatically generated by CondaPkg.jl"</span>
+<span class="ansi-green-fg ansi-bold">    CondaPkg </span>Installing packages
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">/home/runner/.julia/artifacts/4ae17cee0bd922f66b2c72bf2f01c22481a5ec19/bin/pixi</span>
+<span class="ansi-green-fg ansi-bold">             </span>│ <span class="ansi-bright-black-fg">install</span>
+<span class="ansi-green-fg ansi-bold">             </span>└ <span class="ansi-bright-black-fg">--manifest-path /home/runner/work/MoMoJuWo/MoMoJuWo/pages/sharing/.CondaPkg/pixi.toml</span>
+✔ The default environment has been installed.
+<span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+   1110.3 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerJSONExt<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 1 seconds
+<span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+    886.4 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerTablesExt<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 1 seconds
+<span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+   2602.8 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerPythonCallExt<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 3 seconds
+</pre>
+</div>
+</div>
+</div>
+<p>However you obtain it, simply push this new folder to the remote repository <a href="https://github.com/myuser/MyAwesomePackage.jl" class="uri">https://github.com/myuser/MyAwesomePackage.jl</a> (as BestieTemplate.jl instructs you to do), and you’re ready to go. The rest of this post will explain to you what each part of this big scary folder does, and how to bend them to your will.</p>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readdir</span>(<span class="st">"MyAwesomePackage.jl"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>16-element Vector{String}:
+ ".JuliaFormatter.toml"
+ ".copier-answers.yml"
+ ".editorconfig"
+ ".github"
+ ".gitignore"
+ ".lychee.toml"
+ ".markdownlint.json"
+ ".yamlfmt.yml"
+ ".yamllint.yml"
+ "LICENSE"
+ "Project.toml"
+ "README.md"
+ "codecov.yml"
+ "docs"
+ "src"
+ "test"</code></pre>
+</div>
+</div>
+<p>To work on the package further, we switch to its environment or “develop” it into the current one, and then import it:</p>
+<div id="6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Pkg</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="st">"MyAwesomePackage.jl"</span>)  <span class="co"># or Pkg.develop</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">status</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">  Activating</span> project at `~/work/MoMoJuWo/MoMoJuWo/pages/sharing/MyAwesomePackage.jl`
+<span class="ansi-cyan-fg ansi-bold">Project</span> MyAwesomePackage v0.1.0
+<span class="ansi-green-fg ansi-bold">Status</span> `~/work/MoMoJuWo/MoMoJuWo/pages/sharing/MyAwesomePackage.jl/Project.toml`
+</pre>
+</div>
+</div>
+</div>
+<p>followed by</p>
+<div id="8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MyAwesomePackage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+    356.9 ms<span class="ansi-green-fg">  ✓ </span>MyAwesomePackage<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 0 seconds
+</pre>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Advanced
+</summary>
+<p>An older alternative to BestieTemplate.jl is <a href="https://github.com/JuliaCI/PkgTemplates.jl">PkgTemplates.jl</a>. It is less feature-rich and does not allow updates of an existing project, so we no longer recommend it. Still, if you want to try it out, there is a graphical wrapper called <a href="https://github.com/Eben60/PackageMaker.jl">PackageMaker.jl</a>.</p>
+</details>
 </section>
 <section id="github-actions" class="level2">
 <h2 class="anchored" data-anchor-id="github-actions">GitHub Actions</h2>
-<ul>
-<li><a href="https://docs.github.com/en/actions/quickstart">GitHub Actions</a></li>
-<li><a href="https://juliaci.github.io/PkgTemplates.jl/stable/user/#Plugins-1">plugins</a></li>
-<li><a href="https://juliaci.github.io/PkgTemplates.jl/stable/user/#Default-Plugins">default selection</a></li>
-</ul>
+<p>The most useful aspect of BestieTemplate.jl is that it automatically generates workflows for <a href="https://docs.github.com/en/actions/quickstart">GitHub Actions</a>. These are stored as YAML files in <code>.github/workflows</code>, with a slightly convoluted syntax that you don’t need to fully understand. For instance, the file <code>Test.yml</code> contains instructions that execute the tests of your package (see below) for each pull request, tag or push to the <code>main</code> branch, while the file <code>Docs.yml</code> builds the documentation. This is done on a GitHub server and should theoretically cost you money, but your GitHub repository is public, you get an unlimited workflow budget for free.</p>
 </section>
 <section id="testing" class="level2">
 <h2 class="anchored" data-anchor-id="testing">Testing</h2>
-<div id="2" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Test</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> <span class="fu">sqrt</span>(<span class="fl">4</span>) <span class="op">≈</span> <span class="fl">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Test</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@test</span> <span class="fu">sqrt</span>(<span class="fl">4</span>) <span class="op">≈</span> <span class="fl">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-green-fg ansi-bold">Test Passed</span></pre>

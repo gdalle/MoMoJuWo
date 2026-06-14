@@ -103,7 +103,7 @@ Pkg.status()
 
     Status `~/work/MoMoJuWo/MoMoJuWo/pages/writing/Project.toml`
       [5903a43b] Infiltrator v1.9.11
-      [295af30f] Revise v3.15.0
+      [295af30f] Revise v3.15.1
       [b77e0a4c] InteractiveUtils v1.11.0
 
 The package mode itself also has a help mode, accessed with `?`, in case you’re lost among all these new keywords.
@@ -208,11 +208,9 @@ println("hello world")
 
 ### Quarto
 
-[Quarto](https://quarto.org/) is an open-source scientific and technical publishing system. Quarto provides a Markdown variant with the `.qmd` extension. Quarto markdown files, like standard Markdown files, also integrate with editors such as VSCode. Install the Quarto [extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) for a streamlined experience.
+[Quarto](https://quarto.org/) is an open-source scientific and technical publishing system, which defines a Markdown variant with the `.qmd` extension. Quarto markdown files, like standard Markdown files, also integrate with editors such as VSCode – install the Quarto [extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) for a streamlined experience.
 
-Unlike standard markdown files however , Quarto markdown files have executable code chunks, which makes them an alternative to notebooks. Additionally, Quarto markdown files give users control over output and styling via the YAML header at the top of the `.qmd` file.
-
-Below is an example of a Quarto markdown file.
+Unlike standard markdown files however, Quarto markdown files have executable code chunks, which makes them an alternative to notebooks. They also give the user control over output and styling, via the YAML header at the top of a `.qmd` file. Here’s an example:
 
 ```` markdown
 ---
@@ -495,13 +493,13 @@ warning_func(3)
 
     ┌ Warning: This is bad
     │   i ^ 2 = 1
-    └ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537
+    └ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:534
     ┌ Warning: This is bad
     │   i ^ 2 = 4
-    └ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537
+    └ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:534
     ┌ Warning: This is bad
     │   i ^ 2 = 9
-    └ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:537
+    └ @ Main.Notebook ~/work/MoMoJuWo/MoMoJuWo/pages/writing/index.qmd:534
 
 Refer to the logging [documentation](https://docs.julialang.org/en/v1/stdlib/Logging/) for more information.
 
